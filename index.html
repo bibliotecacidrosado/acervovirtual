@@ -629,27 +629,45 @@
             carregarLivrosDaPlanilha();
         });
         
-       // Função para carregar dados diretamente do Google Sheets
+       // Função para carregar dados do arquivo dados.json no GitHub
 async function carregarLivrosDaPlanilha() {
     try {
-        // URL alternativa que funciona com CORS
-        const url = `https://api.allorigins.win/raw?url=${encodeURIComponent(
-            `https://docs.google.com/spreadsheets/d/${PLANILHA_ID}/gviz/tq?tqx=out:json&sheet=${ABA_NOME}`
-        )}`;
+        // URL do arquivo dados.json no GitHub (substitua pelo seu caminho real)
+        const url = 'https://raw.githubusercontent.com/bibliotecacidrosado/acervovirtual/refs/heads/main/dados.json';
         
-        const response = await fetch(url);
+        // Adicionar timestamp para evitar cache
+        const response = await fetch(url + '?t=' + new Date().getTime());
+        
         if (!response.ok) {
-            throw new Error('Erro ao carregar dados da planilha');
+            throw new Error('Erro ao carregar dados do arquivo JSON');
         }
         
-        const text = await response.text();
-        const jsonData = JSON.parse(text.substring(47).slice(0, -2));
-        const livros = processarDadosGViz(jsonData);
-        
+        const livros = await response.json();
         processarLivros(livros);
+        
     } catch (error) {
         console.error('Erro detalhado:', error);
         mostrarErro(error);
+        
+        // Tentar carregar dados de fallback se disponível
+        setTimeout(() => {
+            console.log('Tentando carregar dados de fallback...');
+            carregarDadosFallback();
+        }, 2000);
+    }
+}
+
+// Função fallback caso o arquivo principal não carregue
+async function carregarDadosFallback() {
+    try {
+        // Tentar carregar de uma URL alternativa ou versão em cache
+        const response = await fetch('dados.json');
+        if (response.ok) {
+            const livros = await response.json();
+            processarLivros(livros);
+        }
+    } catch (error) {
+        console.error('Também falhou ao carregar fallback:', error);
     }
 }
 
@@ -1014,6 +1032,7 @@ card.setAttribute('data-livro', livro.titulo.toLowerCase().replace(/\s+/g, '-'))
     </script>
 </body>
 </html>
+
 
 
 
