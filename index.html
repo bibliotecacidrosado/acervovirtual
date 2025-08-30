@@ -976,49 +976,6 @@ function gerarUrlLivro(livro) {
     return baseUrl + '?' + params.toString();
 }
 
-// Compartilhar no WhatsApp
-function compartilharWhatsApp() {
-    const url = gerarUrlLivro(livroSelecionado);
-    const texto = `📚 Confira este livro: "${livroSelecionado.titulo}" por ${livroSelecionado.autor}\n\n${url}`;
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(texto)}`;
-    
-    window.open(whatsappUrl, '_blank');
-}
-
-// Copiar link para área de transferência
-function copiarLink() {
-    const url = gerarUrlLivro(livroSelecionado);
-    
-    navigator.clipboard.writeText(url).then(() => {
-        alert('✅ Link copiado para a área de transferência!');
-    }).catch(err => {
-        alert('❌ Erro ao copiar link: ' + err);
-    });
-}
-
-// Compartilhar por Email
-function compartilharEmail() {
-    const url = gerarUrlLivro(livroSelecionado);
-    const assunto = `📚 Livro: ${livroSelecionado.titulo}`;
-    const corpo = `Olá!\n\nRecomendo este livro: "${livroSelecionado.titulo}" por ${livroSelecionado.autor}\n\nAcesse: ${url}\n\n---\nBiblioteca Virtual Cid Rosado`;
-    
-    const mailtoUrl = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
-    
-    window.location.href = mailtoUrl;
-}
-
-// Fechar modal
-function fecharModal() {
-    document.getElementById('modalCompartilhar').style.display = 'none';
-    livroSelecionado = null;
-    livroIndex = null;
-}
-
-// Fechar modal clicando fora
-document.getElementById('modalCompartilhar').addEventListener('click', function(e) {
-    if (e.target === this) fecharModal();
-});
-
 // Função para detectar parâmetros na URL (para links diretos)
 function verificarParametrosUrl() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -1055,30 +1012,9 @@ card.setAttribute('data-livro', livro.titulo.toLowerCase().replace(/\s+/g, '-'))
 }
 
     </script>
-    <!-- Modal de Compartilhamento -->
-<div id="modalCompartilhar" class="modal-compartilhar">
-    <div class="modal-content">
-        <h3>📚 Compartilhar Livro</h3>
-        <p id="modalTitulo">Título do livro</p>
-        <div class="modal-botoes">
-            <button onclick="compartilharWhatsApp()" class="btn-compartilhar btn-whatsapp">
-                📱 WhatsApp
-            </button>
-            <button onclick="copiarLink()" class="btn-compartilhar btn-copiar">
-                📋 Copiar Link
-            </button>
-            <button onclick="compartilharEmail()" class="btn-compartilhar btn-email">
-                ✉️ Email
-            </button>
-            <button onclick="fecharModal()" class="btn-compartilhar btn-fechar">
-                ❌ Fechar
-            </button>
-        </div>
-    </div>
-</div>
 </body>
-
 </html>
+
 
 
 
