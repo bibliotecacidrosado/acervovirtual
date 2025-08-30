@@ -99,6 +99,25 @@
             border-color: var(--cor-primaria);
             box-shadow: 0 0 0 2px rgba(255, 109, 0, 0.2);
         }
+
+        .controles select {
+    padding: 0.8rem 1.2rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    min-width: 200px; /* Reduzi para caber melhor */
+    transition: var(--transicao);
+}
+
+/* Adicione esta media query para mobile */
+@media (max-width: 768px) {
+    .controles select {
+        min-width: auto;
+        width: 100%;
+    }
+}
         
         .info-box {
             background-color: #e8f5e9;
@@ -344,12 +363,20 @@
             <p>Hospedagem estável + Dados em tempo real do Google Sheets</p>
         </div>
         
-        <div class="controles">
-            <input type="text" id="busca" placeholder="Buscar por título ou autor..." onkeyup="filtrarLivros()">
-            <select id="filtro-categoria" onchange="filtrarLivros()">
-                <option value="">Todas as categorias</option>
-            </select>
-        </div>
+       <div class="controles">
+    <input type="text" id="busca" placeholder="Buscar por título ou autor..." onkeyup="filtrarLivros()">
+    <select id="filtro-categoria" onchange="filtrarLivros()">
+        <option value="">Todas as categorias</option>
+    </select>
+    <!-- NOVO SELECT DE ORDENAÇÃO -->
+    <select id="ordenacao" onchange="filtrarLivros()">
+        <option value="aleatoria">🎲 Ordem Aleatória</option>
+        <option value="titulo-az">📖 Título (A-Z)</option>
+        <option value="titulo-za">📖 Título (Z-A)</option>
+        <option value="autor-az">✍️ Autor (A-Z)</option>
+        <option value="categoria">🏷️ Categoria</option>
+    </select>
+</div>
         
         <div class="estatisticas">
             <div class="estatistica-item">
@@ -594,32 +621,86 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
-        
-        // Filtrar livros com base nos critérios de busca
-        function filtrarLivros() {
-            const termoBusca = document.getElementById('busca').value.toLowerCase();
-            const categoriaSelecionada = document.getElementById('filtro-categoria').value;
+
+        // Função para ordenar os livros conforme a seleção
+function ordenarLivros(livros, tipoOrdenacao) {
+    // Criar uma cópia para não modificar o array original
+    const livrosOrdenados = [...livros];
+    
+    switch(tipoOrdenacao) {
+        case 'titulo-az':
+            return livrosOrdenados.sort((a, b) => 
+                a.titulo.localeCompare(b.titulo, 'pt-BR', { sensitivity: 'base' })
+            );
             
-            // Resetar para a primeira página ao filtrar
-            paginaAtual = 1;
+        case 'titulo-za':
+            return livrosOrdenados.sort((a, b) => 
+                b.titulo.localeCompare(a.titulo, 'pt-BR', { sensitivity: 'base' })
+            );
             
-            livrosFiltrados = todosLivros.filter(livro => {
-                const correspondeBusca = !termoBusca || 
-                    livro.titulo.toLowerCase().includes(termoBusca) || 
-                    livro.autor.toLowerCase().includes(termoBusca);
-                
-                const correspondeCategoria = !categoriaSelecionada || 
-                    livro.categoria === categoriaSelecionada;
-                
-                return correspondeBusca && correspondeCategoria;
+        case 'autor-az':
+            return livrosOrdenados.sort((a, b) => 
+                a.autor.localeCompare(b.autor, 'pt-BR', { sensitivity: 'base' })
+            );
+            
+        case 'categoria':
+            return livrosOrdenados.sort((a, b) => {
+                // Primeiro ordena por categoria, depois por título
+                const catCompare = (a.categoria || '').localeCompare(b.categoria || '', 'pt-BR');
+                return catCompare !== 0 ? catCompare : 
+                    a.titulo.localeCompare(b.titulo, 'pt-BR');
             });
             
-            // Atualizar estatísticas
-            atualizarEstatisticas();
-            
-            // Exibir livros filtrados
-            exibirLivros();
-        }
+        case 'aleatoria':
+        default:
+            return aleatorizarArray(livrosOrdenados);
+    }
+}
+
+// Função para aleatorizar (já existente, mas atualizada)
+function aleatorizarArray(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+    
+    while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+    
+    return array;
+}
+        
+       function filtrarLivros() {
+    const termoBusca = document.getElementById('busca').value.toLowerCase();
+    const categoriaSelecionada = document.getElementById('filtro-categoria').value;
+    const ordenacaoSelecionada = document.getElementById('ordenacao').value; // NOVA LINHA
+    
+    // Resetar para a primeira página ao filtrar
+    paginaAtual = 1;
+    
+    livrosFiltrados = todosLivros.filter(livro => {
+        const correspondeBusca = !termoBusca || 
+            livro.titulo.toLowerCase().includes(termoBusca) || 
+            livro.autor.toLowerCase().includes(termoBusca);
+        
+        const correspondeCategoria = !categoriaSelecionada || 
+            livro.categoria === categoriaSelecionada;
+        
+        return correspondeBusca && correspondeCategoria;
+    });
+    
+    // 🔁 APLICAR ORDENAÇÃO - NOVO CÓDIGO
+    livrosFiltrados = ordenarLivros(livrosFiltrados, ordenacaoSelecionada);
+    
+    // Atualizar estatísticas
+    atualizarEstatisticas();
+    
+    // Exibir livros filtrados
+    exibirLivros();
+}
         
         // Atualizar estatísticas
         function atualizarEstatisticas() {
@@ -642,3 +723,4 @@
 </body>
 
 </html>
+
