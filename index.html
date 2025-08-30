@@ -916,7 +916,12 @@ function aleatorizarArray(array) {
     const termoBusca = document.getElementById('busca').value.toLowerCase();
     const categoriaSelecionada = document.getElementById('filtro-categoria').value;
     const ordenacaoSelecionada = document.getElementById('ordenacao').value; // NOVA LINHA
-    
+    let debounceTimeout;
+document.getElementById('busca').addEventListener('input', function() {
+    clearTimeout(debounceTimeout);
+    debounceTimeout = setTimeout(() => filtrarLivros(), 300);
+});
+
     // Resetar para a primeira página ao filtrar
     paginaAtual = 1;
     
@@ -1032,6 +1037,7 @@ card.setAttribute('data-livro', livro.titulo.toLowerCase().replace(/\s+/g, '-'))
     </script>
 </body>
 </html>
+
 
 
 
