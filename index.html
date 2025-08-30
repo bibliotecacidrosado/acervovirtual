@@ -1047,6 +1047,13 @@ function verificarParametrosUrl() {
 // Adicione data attribute aos cards (modifique a criação dos cards):
 // No loop onde cria os cards, adicione:
 card.setAttribute('data-livro', livro.titulo.toLowerCase().replace(/\s+/g, '-'));
+
+        function validarCapa(url) {
+    return fetch(url, { method: 'HEAD' })
+        .then(response => response.ok)
+        .catch(() => false);
+}
+
     </script>
     <!-- Modal de Compartilhamento -->
 <div id="modalCompartilhar" class="modal-compartilhar">
@@ -1072,6 +1079,7 @@ card.setAttribute('data-livro', livro.titulo.toLowerCase().replace(/\s+/g, '-'))
 </body>
 
 </html>
+
 
 
 
