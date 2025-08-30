@@ -814,6 +814,11 @@ function compartilharLivro(index) {
     Logger.log('URL de compartilhamento: ' + url);
 }
 
+// Fechar modal com tecla ESC
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') fecharModal();
+});
+
 // Gerar URL única para o livro
 function gerarUrlLivro(livro) {
     const baseUrl = 'https://bibliotecacidrosado.github.io/acervovirtual/';
@@ -922,6 +927,7 @@ card.setAttribute('data-livro', livro.titulo.toLowerCase().replace(/\s+/g, '-'))
 </body>
 
 </html>
+
 
 
 
