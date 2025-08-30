@@ -238,6 +238,76 @@
         .card-botao:hover {
             background-color: var(--cor-secundaria);
         }
+
+        .card-botoes {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.card-botao.compartilhar {
+    background-color: var(--cor-secundaria);
+    cursor: pointer;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+.card-botao.compartilhar:hover {
+    background-color: var(--cor-terciaria);
+}
+
+/* Modal de compartilhamento */
+.modal-compartilhar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
+
+.modal-botoes {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.btn-compartilhar {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transicao);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-whatsapp { background: #25D366; color: white; }
+.btn-copiar { background: #FF6D00; color: white; }
+.btn-email { background: #EA4335; color: white; }
+.btn-fechar { background: #666; color: white; }
+
+.btn-compartilhar:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
         
         .sem-resultados {
             text-align: center;
@@ -572,11 +642,15 @@
                     <img src="${livro.capa}" alt="Capa do livro ${livro.titulo}" class="card-capa"
                          onerror="this.src='https://via.placeholder.com/200x300?text=Imagem+Não+Encontrada'">
                     <div class="card-corpo">
-                        <h3 class="card-titulo">${livro.titulo}</h3>
-                        <p class="card-autor">${livro.autor}</p>
-                        ${livro.categoria ? `<span class="card-categoria">${livro.categoria}</span>` : ''}
-                        <a href="${livro.link}" target="_blank" class="card-botao">Acessar Livro</a>
-                    </div>
+    <h3 class="card-titulo">${livro.titulo}</h3>
+    <p class="card-autor">${livro.autor}</p>
+    ${livro.categoria ? `<span class="card-categoria">${livro.categoria}</span>` : ''}
+    
+    <div class="card-botoes">
+        <a href="${livro.link}" target="_blank" class="card-botao">📖 Ler Livro</a>
+        <button onclick="compartilharLivro(${i})" class="card-botao compartilhar">🔗 Compartilhar</button>
+    </div>
+</div>
                 `;
                 container.appendChild(card);
             });
@@ -719,8 +793,132 @@ function aleatorizarArray(array) {
             `;
             carregarLivrosDaPlanilha();
         }
+
+        // Variáveis para compartilhamento
+let livroSelecionado = null;
+let livroIndex = null;
+
+// Função para abrir modal de compartilhamento
+function compartilharLivro(index) {
+    livroIndex = index;
+    livroSelecionado = livrosFiltrados[index];
+    
+    // Atualizar modal
+    document.getElementById('modalTitulo').textContent = livroSelecionado.titulo;
+    document.getElementById('modalCompartilhar').style.display = 'flex';
+    
+    // Gerar URL única para o livro
+    const url = gerarUrlLivro(livroSelecionado);
+    Logger.log('URL de compartilhamento: ' + url);
+}
+
+// Gerar URL única para o livro
+function gerarUrlLivro(livro) {
+    const baseUrl = 'https://bibliotecacidrosado.github.io/acervovirtual/';
+    const params = new URLSearchParams({
+        livro: livro.titulo.toLowerCase().replace(/\s+/g, '-'),
+        autor: livro.autor.toLowerCase().replace(/\s+/g, '-'),
+        from: 'share'
+    });
+    
+    return baseUrl + '?' + params.toString();
+}
+
+// Compartilhar no WhatsApp
+function compartilharWhatsApp() {
+    const url = gerarUrlLivro(livroSelecionado);
+    const texto = `📚 Confira este livro: "${livroSelecionado.titulo}" por ${livroSelecionado.autor}\n\n${url}`;
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(texto)}`;
+    
+    window.open(whatsappUrl, '_blank');
+}
+
+// Copiar link para área de transferência
+function copiarLink() {
+    const url = gerarUrlLivro(livroSelecionado);
+    
+    navigator.clipboard.writeText(url).then(() => {
+        alert('✅ Link copiado para a área de transferência!');
+    }).catch(err => {
+        alert('❌ Erro ao copiar link: ' + err);
+    });
+}
+
+// Compartilhar por Email
+function compartilharEmail() {
+    const url = gerarUrlLivro(livroSelecionado);
+    const assunto = `📚 Livro: ${livroSelecionado.titulo}`;
+    const corpo = `Olá!\n\nRecomendo este livro: "${livroSelecionado.titulo}" por ${livroSelecionado.autor}\n\nAcesse: ${url}\n\n---\nBiblioteca Virtual Cid Rosado`;
+    
+    const mailtoUrl = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+    
+    window.location.href = mailtoUrl;
+}
+
+// Fechar modal
+function fecharModal() {
+    document.getElementById('modalCompartilhar').style.display = 'none';
+    livroSelecionado = null;
+    livroIndex = null;
+}
+
+// Fechar modal clicando fora
+document.getElementById('modalCompartilhar').addEventListener('click', function(e) {
+    if (e.target === this) fecharModal();
+});
+
+// Função para detectar parâmetros na URL (para links diretos)
+function verificarParametrosUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const livroParam = urlParams.get('livro');
+    
+    if (livroParam) {
+        // Buscar livro pelo título
+        const livroEncontrado = todosLivros.find(livro => 
+            livro.titulo.toLowerCase().replace(/\s+/g, '-') === livroParam
+        );
+        
+        if (livroEncontrado) {
+            // Rolagem suave para o livro
+            setTimeout(() => {
+                const card = document.querySelector(`[data-livro="${livroEncontrado.titulo}"]`);
+                if (card) {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    card.style.boxShadow = '0 0 0 3px var(--cor-primaria)';
+                    setTimeout(() => card.style.boxShadow = '', 3000);
+                }
+            }, 1000);
+        }
+    }
+}
+
+// Adicione data attribute aos cards (modifique a criação dos cards):
+// No loop onde cria os cards, adicione:
+card.setAttribute('data-livro', livro.titulo.toLowerCase().replace(/\s+/g, '-'));
     </script>
+    <!-- Modal de Compartilhamento -->
+<div id="modalCompartilhar" class="modal-compartilhar">
+    <div class="modal-content">
+        <h3>📚 Compartilhar Livro</h3>
+        <p id="modalTitulo">Título do livro</p>
+        <div class="modal-botoes">
+            <button onclick="compartilharWhatsApp()" class="btn-compartilhar btn-whatsapp">
+                📱 WhatsApp
+            </button>
+            <button onclick="copiarLink()" class="btn-compartilhar btn-copiar">
+                📋 Copiar Link
+            </button>
+            <button onclick="compartilharEmail()" class="btn-compartilhar btn-email">
+                ✉️ Email
+            </button>
+            <button onclick="fecharModal()" class="btn-compartilhar btn-fechar">
+                ❌ Fechar
+            </button>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>
+
 
