@@ -613,51 +613,53 @@
         }
         
         // Exibir livros na tela com paginação
-        function exibirLivros() {
-            const container = document.getElementById('livros-container');
-            const controlesPaginacao = document.getElementById('controles-paginacao');
-            
-            if (livrosFiltrados.length === 0) {
-                container.innerHTML = `
-                    <div class="sem-resultados">
-                        <h3>Nenhum livro encontrado</h3>
-                        <p>Tente ajustar os filtros de busca.</p>
-                    </div>
-                `;
-                controlesPaginacao.style.display = 'none';
-                return;
-            }
-            
-            // Calcular índices para a página atual
-            const indiceInicio = (paginaAtual - 1) * livrosPorPagina;
-            const indiceFim = indiceInicio + livrosPorPagina;
-            const livrosPagina = livrosFiltrados.slice(indiceInicio, indiceFim);
-            
-            container.innerHTML = '';
-            
-            livrosPagina.forEach(livro => {
-                const card = document.createElement('div');
-                card.className = 'card-livro';
-                card.innerHTML = `
-                    <img src="${livro.capa}" alt="Capa do livro ${livro.titulo}" class="card-capa"
-                         onerror="this.src='https://via.placeholder.com/200x300?text=Imagem+Não+Encontrada'">
-                    <div class="card-corpo">
-    <h3 class="card-titulo">${livro.titulo}</h3>
-    <p class="card-autor">${livro.autor}</p>
-    ${livro.categoria ? `<span class="card-categoria">${livro.categoria}</span>` : ''}
+function exibirLivros() {
+    const container = document.getElementById('livros-container');
+    const controlesPaginacao = document.getElementById('controles-paginacao');
     
-    <div class="card-botoes">
-        <a href="${livro.link}" target="_blank" class="card-botao">📖 Ler Livro</a>
-        <button onclick="compartilharLivro(${i})" class="card-botao compartilhar">🔗 Compartilhar</button>
-    </div>
-</div>
-                `;
-                container.appendChild(card);
-            });
-            
-            // Atualizar controles de paginação
-            atualizarControlesPaginacao();
-        }
+    if (livrosFiltrados.length === 0) {
+        container.innerHTML = `
+            <div class="sem-resultados">
+                <h3>Nenhum livro encontrado</h3>
+                <p>Tente ajustar os filtros de busca.</p>
+            </div>
+        `;
+        controlesPaginacao.style.display = 'none';
+        return;
+    }
+    
+    // Calcular índices para a página atual
+    const indiceInicio = (paginaAtual - 1) * livrosPorPagina;
+    const indiceFim = indiceInicio + livrosPorPagina;
+    const livrosPagina = livrosFiltrados.slice(indiceInicio, indiceFim);
+    
+    container.innerHTML = '';
+    
+    livrosPagina.forEach((livro, index) => {
+        const card = document.createElement('div');
+        card.className = 'card-livro';
+        card.setAttribute('data-livro', livro.titulo.toLowerCase().replace(/\s+/g, '-'));
+        
+        card.innerHTML = `
+            <img src="${livro.capa}" alt="Capa do livro ${livro.titulo}" class="card-capa"
+                 onerror="this.src='https://via.placeholder.com/200x300?text=Imagem+Não+Encontrada'">
+            <div class="card-corpo">
+                <h3 class="card-titulo">${livro.titulo}</h3>
+                <p class="card-autor">${livro.autor}</p>
+                ${livro.categoria ? `<span class="card-categoria">${livro.categoria}</span>` : ''}
+                
+                <div class="card-botoes">
+                    <a href="${livro.link}" target="_blank" class="card-botao">📖 Ler Livro</a>
+                    <button onclick="compartilharLivro(${index})" class="card-botao compartilhar">🔗 Compartilhar</button>
+                </div>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+    
+    // Atualizar controles de paginação
+    atualizarControlesPaginacao();
+}
         
         // Atualizar controles de paginação
         function atualizarControlesPaginacao() {
@@ -920,5 +922,6 @@ card.setAttribute('data-livro', livro.titulo.toLowerCase().replace(/\s+/g, '-'))
 </body>
 
 </html>
+
 
 
