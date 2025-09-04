@@ -629,31 +629,27 @@
             carregarLivrosDaPlanilha();
         });
         
-       // Função para carregar dados do arquivo dados.json no GitHub
-async function carregarLivrosDaPlanilha() {
+      async function carregarLivrosDaPlanilha() {
     try {
-        // URL do arquivo dados.json no GitHub (substitua pelo seu caminho real)
         const url = 'https://raw.githubusercontent.com/bibliotecacidrosado/acervovirtual/refs/heads/main/dados.json';
-        
-        // Adicionar timestamp para evitar cache
         const response = await fetch(url + '?t=' + new Date().getTime());
         
         if (!response.ok) {
-            throw new Error('Erro ao carregar dados do arquivo JSON');
+            throw new Error('Erro ao carregar dados: ' + response.status);
         }
         
         const livros = await response.json();
-        processarLivros(livros);
+        
+        // Verifica se a estrutura é a esperada
+        if (Array.isArray(livros) && livros.length > 0) {
+            processarLivros(livros);
+        } else {
+            throw new Error('Estrutura de dados inválida');
+        }
         
     } catch (error) {
-        console.error('Erro detalhado:', error);
+        console.error('Erro:', error);
         mostrarErro(error);
-        
-        // Tentar carregar dados de fallback se disponível
-        setTimeout(() => {
-            console.log('Tentando carregar dados de fallback...');
-            carregarDadosFallback();
-        }, 2000);
     }
 }
 
@@ -727,9 +723,15 @@ function processarDadosGViz(data) {
 }
                        
         // Processar livros recebidos
-        function processarLivros(livros) {
-            todosLivros = livros;
-            livrosFiltrados = [...livros];
+     function processarLivros(livros) {
+    console.log('Livros recebidos:', livros); // Debug
+    
+    if (!Array.isArray(livros)) {
+        throw new Error('Dados não são um array');
+    }
+    
+    todosLivros = livros;
+    livrosFiltrados = [...livros];
             
             // Coletar categorias únicas
             categoriasUnicas.clear();
@@ -1037,6 +1039,7 @@ card.setAttribute('data-livro', livro.titulo.toLowerCase().replace(/\s+/g, '-'))
     </script>
 </body>
 </html>
+
 
 
 
