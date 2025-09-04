@@ -299,5 +299,26 @@
     "categoria": "Filosofia",
     "link": "http://www.dominiopublico.gov.br/download/texto/cv000048.pdf",
     "capa": "https://drive.google.com/thumbnail?id=1ieCSGTReltgxkV65dlXa2rMB7IBxLGUe&sz=w400"
+  },
+  {
+    "titulo": "Anna Karenina",
+    "autor": "León Tolstói",
+    "categoria": "Literatura",
+    "link": "https://humanitas.ufrn.br/wp-content/uploads/2025/03/Anna-Karenina.pdf",
+    "capa": "https://drive.google.com/thumbnail?id=1loo76xDHxWwfEdibM3L_eDu9LfrkKbEw&sz=w400"
+  },
+  {
+    "titulo": "O Ventre de Nápoles",
+    "autor": "Matilde Serao",
+    "categoria": "Literatura",
+    "link": "https://literaturalivre-prd.sescdigital.cloud/wp-content/uploads/2022/08/005-O-ventre-de-Na%CC%81poles-978-65-89008-24-8-1.pdf",
+    "capa": "https://drive.google.com/thumbnail?id=1XZDPFTwkZ6AtI64Zr4-qpcvy6mxgdsEu&sz=w400"
+  },
+  {
+    "titulo": "O Banqueiro Anarquista ",
+    "autor": "Fernando pessoa ",
+    "categoria": "Literatura",
+    "link": "https://projectoadamastor.org/catalogo/",
+    "capa": "https://drive.google.com/thumbnail?id=1f3rbK0Bb-05Fnnb9FK_rcNvys5KLPKUK&sz=w400"
   }
 ]
