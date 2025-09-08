@@ -119,7 +119,7 @@
     "capa": "https://drive.google.com/thumbnail?id=1cA15EP3hkDLjrP0p7GV7xwVV1J9zOx2p&sz=w400"
   },
   {
-    "titulo": "A Desejadas das Gentes ",
+    "titulo": "A Desejada das Gentes ",
     "autor": "Machado De Asis ",
     "categoria": "Literatura",
     "link": "http://www.dominiopublico.gov.br/pesquisa/DetalheObraDownload.do?select_action=&co_obra=16918&co_midia=2",
@@ -369,5 +369,12 @@
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1g_FWfmFbIJwV3Ab9oMFQja2vRxilzgVO",
     "capa": "https://drive.google.com/thumbnail?id=1gW13CZrZsIzUN1411gawN8BvOjRvbYBL&sz=w400"
+  },
+  {
+    "titulo": "Discurso do Método ",
+    "autor": "René Descartes",
+    "categoria": "Filosofia",
+    "link": "https://drive.google.com/open?id=11IPFTyZYI5QK_K8Vi1sxt9jFWtfxQLdk",
+    "capa": "https://drive.google.com/thumbnail?id=1nOQ2CYyqEKbLBjrLwlc-UEhQxQfxeSmx&sz=w400"
   }
 ]
