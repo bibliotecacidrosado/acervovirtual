@@ -17,6 +17,7 @@
     <!-- Microsoft Tiles -->
     <meta name="msapplication-TileImage" content="https://cdn-icons-png.flaticon.com/512/2232/2232688.png">
     <style>
+        /* SEUS ESTILOS PERMANECEM OS MESMOS */
         :root {
             --cor-primaria: #FF6D00;
             --cor-secundaria: #FF9100;
@@ -99,23 +100,22 @@
         }
 
         .controles select {
-    padding: 0.8rem 1.2rem;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    background-color: white;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    min-width: 200px; /* Reduzi para caber melhor */
-    transition: var(--transicao);
-}
+            padding: 0.8rem 1.2rem;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            background-color: white;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            min-width: 200px;
+            transition: var(--transicao);
+        }
 
-/* Adicione esta media query para mobile */
-@media (max-width: 768px) {
-    .controles select {
-        min-width: auto;
-        width: 100%;
-    }
-}
+        @media (max-width: 768px) {
+            .controles select {
+                min-width: auto;
+                width: 100%;
+            }
+        }
         
         .info-box {
             background-color: #e8f5e9;
@@ -165,7 +165,7 @@
             margin-top: 1.5rem;
         }
         
-     .card-livro {
+        .card-livro {
             background: white;
             border-radius: 10px;
             overflow: hidden;
@@ -174,15 +174,9 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-        } 
-
-        /* Ícone de compartilhamento no card */
-.card-livro {
-    position: relative; /* Necessário para posicionar o ícone absolutamente */
-    /* mantém os outros estilos */
-}
+        }
      
-.card-livro:hover {
+        .card-livro:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
@@ -242,203 +236,6 @@
         .card-botao:hover {
             background-color: var(--cor-secundaria);
         }
-
-        /*.card-botoes {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: auto;
-}
-
-.card-botao.compartilhar {
-    background-color: var(--cor-secundaria);
-    cursor: pointer;
-    border: none;
-    font-family: 'Roboto', sans-serif;
-}
-
-.card-botao.compartilhar:hover {
-    background-color: var(--cor-terciaria);
-}
-
-
-/* Container da capa com ícone flutuante */
-.capa-container {
-    position: relative;
-    width: 100%;
-    height: 220px;
-}
-
-        /* Ícone de compartilhamento responsivo */
-.icone-compartilhar {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background: rgba(255, 255, 255, 0.95);
-    border: none;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-    z-index: 10;
-    font-size: 16px;
-}
-
-.icone-compartilhar:hover {
-    background: var(--cor-primaria);
-    color: white;
-    transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-    .icone-compartilhar {
-        width: 32px;
-        height: 32px;
-        font-size: 14px;
-        top: 6px;
-        right: 6px;
-    }
-}
-
-/* Efeito de tooltip para desktop */
-@media (min-width: 769px) {
-    .icone-compartilhar {
-        position: relative;
-    }
-    
-    .icone-compartilhar::before {
-        content: 'Compartilhar';
-        position: absolute;
-        top: -30px;
-        right: 0;
-        background: #333;
-        color: white;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 0.7rem;
-        white-space: nowrap;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-    }
-    
-    .icone-compartilhar:hover::before {
-        opacity: 1;
-    }
-}
-
-/* Ícone de compartilhamento flutuante */
-/*.icone-compartilhar {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(255, 255, 255, 0.9);
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-    z-index: 10;
-}
-
-.icone-compartilhar:hover {
-    background: var(--cor-primaria);
-    transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-.icone-compartilhar:hover::before {
-    content: 'Compartilhar';
-    position: absolute;
-    top: -30px;
-    right: 0;
-    background: #333;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    white-space: nowrap;
-}
-
-/* Efeito de tooltip para desktop */
-@media (min-width: 769px) {
-    .icone-compartilhar:hover::after {
-        content: 'Compartilhar';
-        position: absolute;
-        top: -35px;
-        right: 0;
-        background: #333;
-        color: white;
-        padding: 5px 10px;
-        border-radius: 4px;
-        font-size: 0.8rem;
-        white-space: nowrap;
-    }
-}
-        
-/* Modal de compartilhamento */
-.modal-compartilhar {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    max-width: 500px;
-    width: 90%;
-    text-align: center;
-}
-
-.modal-botoes {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-top: 1.5rem;
-    flex-wrap: wrap;
-}
-
-.btn-compartilhar {
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: var(--transicao);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.btn-whatsapp { background: #25D366; color: white; }
-.btn-copiar { background: #FF6D00; color: white; }
-.btn-email { background: #EA4335; color: white; }
-.btn-fechar { background: #666; color: white; }
-
-.btn-compartilhar:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-}
         
         .sem-resultados {
             text-align: center;
@@ -564,20 +361,19 @@
             <p>Hospedagem estável + Dados em tempo real do Google Sheets</p>
         </div>
         
-       <div class="controles">
-    <input type="text" id="busca" placeholder="Buscar por título ou autor..." onkeyup="filtrarLivros()">
-    <select id="filtro-categoria" onchange="filtrarLivros()">
-        <option value="">Todas as categorias</option>
-    </select>
-    <!-- NOVO SELECT DE ORDENAÇÃO -->
-    <select id="ordenacao" onchange="filtrarLivros()">
-        <option value="aleatoria">🎲 Ordem Aleatória</option>
-        <option value="titulo-az">📖 Título (A-Z)</option>
-        <option value="titulo-za">📖 Título (Z-A)</option>
-        <option value="autor-az">✍️ Autor (A-Z)</option>
-        <option value="categoria">🏷️ Categoria</option>
-    </select>
-</div>
+        <div class="controles">
+            <input type="text" id="busca" placeholder="Buscar por título ou autor..." onkeyup="filtrarLivros()">
+            <select id="filtro-categoria" onchange="filtrarLivros()">
+                <option value="">Todas as categorias</option>
+            </select>
+            <select id="ordenacao" onchange="filtrarLivros()">
+                <option value="aleatoria">🎲 Ordem Aleatória</option>
+                <option value="titulo-az">📖 Título (A-Z)</option>
+                <option value="titulo-za">📖 Título (Z-A)</option>
+                <option value="autor-az">✍️ Autor (A-Z)</option>
+                <option value="categoria">🏷️ Categoria</option>
+            </select>
+        </div>
         
         <div class="estatisticas">
             <div class="estatistica-item">
@@ -625,54 +421,63 @@
             carregarLivrosDaPlanilha();
         });
         
-       // Função para carregar dados do arquivo dados.json no GitHub
-async function carregarLivrosDaPlanilha() {
-    try {
-        // URL do arquivo dados.json no GitHub (substitua pelo seu caminho real)
-        const url = 'https://raw.githubusercontent.com/bibliotecacidrosado/acervovirtual/refs/heads/main/dados.json';
-        
-        // Adicionar timestamp para evitar cache
-        const response = await fetch(url + '?t=' + new Date().getTime());
-        
-        if (!response.ok) {
-            throw new Error('Erro ao carregar dados do arquivo JSON');
+        // Função para carregar dados do arquivo dados.json no GitHub
+        async function carregarLivrosDaPlanilha() {
+            try {
+                // URL do arquivo dados.json no GitHub
+                const url = 'https://raw.githubusercontent.com/bibliotecacidrosado/acervovirtual/main/dados.json';
+                
+                // Usar cache busting mais eficiente
+                const response = await fetch(url + '?v=' + new Date().getTime());
+                
+                if (!response.ok) {
+                    throw new Error('Erro ao carregar dados: ' + response.status);
+                }
+                
+                const livros = await response.json();
+                
+                // Verificar se a estrutura é válida
+                if (!Array.isArray(livros)) {
+                    throw new Error('Formato de dados inválido');
+                }
+                
+                processarLivros(livros);
+                
+            } catch (error) {
+                console.error('Erro ao carregar dados:', error);
+                mostrarErro(error);
+                
+                // Tentar carregar dados de fallback
+                setTimeout(() => {
+                    carregarDadosFallback();
+                }, 2000);
+            }
         }
-        
-        const livros = await response.json();
-        processarLivros(livros);
-        
-    } catch (error) {
-        console.error('Erro detalhado:', error);
-        mostrarErro(error);
-        
-        // Tentar carregar dados de fallback se disponível
-        setTimeout(() => {
-            console.log('Tentando carregar dados de fallback...');
-            carregarDadosFallback();
-        }, 2000);
-    }
-}
 
-// Função fallback caso o arquivo principal não carregue
-async function carregarDadosFallback() {
-    try {
-        // Tentar carregar de uma URL alternativa ou versão em cache
-        const response = await fetch('dados.json');
-        if (response.ok) {
-            const livros = await response.json();
-            processarLivros(livros);
+        // Função fallback
+        async function carregarDadosFallback() {
+            try {
+                console.log('Tentando carregar fallback...');
+                const response = await fetch('./dados.json?v=' + new Date().getTime());
+                if (response.ok) {
+                    const livros = await response.json();
+                    processarLivros(livros);
+                } else {
+                    throw new Error('Fallback também falhou');
+                }
+            } catch (error) {
+                console.error('Erro no fallback:', error);
+                mostrarErro({message: 'Não foi possível carregar os dados. Verifique sua conexão.'});
+            }
         }
-    } catch (error) {
-        console.error('Também falhou ao carregar fallback:', error);
-    }
-}
-                       
+        
         // Processar livros recebidos
         function processarLivros(livros) {
-            console.log('Livros recebidos:', livros); // Debug
+            console.log('Livros processados:', livros);
             
             if (!Array.isArray(livros)) {
-                throw new Error('Dados não são um array');
+                mostrarErro({message: 'Dados recebidos não são válidos'});
+                return;
             }
             
             todosLivros = livros;
@@ -681,7 +486,7 @@ async function carregarDadosFallback() {
             // Coletar categorias únicas
             categoriasUnicas.clear();
             livros.forEach(livro => {
-                if (livro.categoria) {
+                if (livro.categoria && livro.categoria.trim() !== '') {
                     categoriasUnicas.add(livro.categoria);
                 }
             });
@@ -695,19 +500,21 @@ async function carregarDadosFallback() {
             // Exibir livros
             exibirLivros();
             
-            // Verificar parâmetros na URL após carregar os livros
+            // Verificar parâmetros na URL
             verificarParametrosUrl();
         }
         
         // Mostrar erro
         function mostrarErro(error) {
-            console.error('Erro:', error);
-            document.getElementById('livros-container').innerHTML = `
+            const container = document.getElementById('livros-container');
+            container.innerHTML = `
                 <div class="sem-resultados">
                     <h3>Erro ao carregar os dados</h3>
-                    <p>${error.message || error}</p>
-                    <p>Verifique se a planilha está pública</p>
-                    <button onclick="carregarLivrosDaPlanilha()" style="margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--cor-primaria); color: white; border: none; border-radius: 4px; cursor: pointer;">Tentar Novamente</button>
+                    <p>${error.message || 'Erro desconhecido'}</p>
+                    <p>Verifique se o arquivo dados.json existe no repositório</p>
+                    <button onclick="carregarLivrosDaPlanilha()" style="margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--cor-primaria); color: white; border: none; border-radius: 4px; cursor: pointer;">
+                        Tentar Novamente
+                    </button>
                 </div>
             `;
         }
@@ -729,51 +536,55 @@ async function carregarDadosFallback() {
         }
         
         // Exibir livros na tela com paginação
-function exibirLivros() {
-    const container = document.getElementById('livros-container');
-    const controlesPaginacao = document.getElementById('controles-paginacao');
-    
-    if (livrosFiltrados.length === 0) {
-        container.innerHTML = `
-            <div class="sem-resultados">
-                <h3>Nenhum livro encontrado</h3>
-                <p>Tente ajustar os filtros de busca.</p>
-            </div>
-        `;
-        controlesPaginacao.style.display = 'none';
-        return;
-    }
-    
-    // Calcular índices para a página atual
-    const indiceInicio = (paginaAtual - 1) * livrosPorPagina;
-    const indiceFim = indiceInicio + livrosPorPagina;
-    const livrosPagina = livrosFiltrados.slice(indiceInicio, indiceFim);
-    
-    container.innerHTML = '';
-    
-    livrosPagina.forEach((livro, index) => {
-        const card = document.createElement('div');
-        card.className = 'card-livro';
-        card.setAttribute('data-livro', livro.titulo.toLowerCase().replace(/\s+/g, '-'));
+        function exibirLivros() {
+            const container = document.getElementById('livros-container');
+            const controlesPaginacao = document.getElementById('controles-paginacao');
+            
+            if (livrosFiltrados.length === 0) {
+                container.innerHTML = `
+                    <div class="sem-resultados">
+                        <h3>Nenhum livro encontrado</h3>
+                        <p>Tente ajustar os filtros de busca.</p>
+                    </div>
+                `;
+                controlesPaginacao.style.display = 'none';
+                return;
+            }
+            
+            // Calcular índices para a página atual
+            const indiceInicio = (paginaAtual - 1) * livrosPorPagina;
+            const indiceFim = indiceInicio + livrosPorPagina;
+            const livrosPagina = livrosFiltrados.slice(indiceInicio, indiceFim);
+            
+            container.innerHTML = '';
+            
+            livrosPagina.forEach((livro, index) => {
+                const card = document.createElement('div');
+                card.className = 'card-livro';
+                card.setAttribute('data-livro', livro.titulo.toLowerCase().replace(/\s+/g, '-'));
+                
+                card.innerHTML = `
+                    <img src="${livro.capa}" alt="Capa do livro ${livro.titulo}" class="card-capa"
+                         onerror="this.src='https://via.placeholder.com/200x300?text=Imagem+Não+Encontrada'">
+                    <div class="card-corpo">
+                        <h3 class="card-titulo">${livro.titulo}</h3>
+                        <p class="card-autor">${livro.autor}</p>
+                        ${livro.categoria ? `<span class="card-categoria">${livro.categoria}</span>` : ''}
+                        <a href="${livro.link}" target="_blank" class="card-botao">📖 Ler Livro</a>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            
+            // Atualizar controles de paginação
+            atualizarControlesPaginacao();
+        }
         
-     card.innerHTML = `
-    <img src="${livro.capa}" alt="Capa do livro ${livro.titulo}" class="card-capa"
-         onerror="this.src='https://via.placeholder.com/200x300?text=Imagem+Não+Encontrada'">
-       
-    <div class="card-corpo">
-        <h3 class="card-titulo">${livro.titulo}</h3>
-        <p class="card-autor">${livro.autor}</p>
-        ${livro.categoria ? `<span class="card-categoria">${livro.categoria}</span>` : ''}
-        <a href="${livro.link}" target="_blank" class="card-botao">📖 Ler Livro</a>
-    </div>
-`;
-        container.appendChild(card);
-    });
-    
-    // Atualizar controles de paginação
-    atualizarControlesPaginacao();
-}
-        
+        // Restante do seu código JavaScript permanece igual...
+        // [Manter todas as outras funções: atualizarControlesPaginacao, paginaAnterior, 
+        //  proximaPagina, ordenarLivros, aleatorizarArray, filtrarLivros, 
+        //  atualizarEstatisticas, verificarParametrosUrl]
+
         // Atualizar controles de paginação
         function atualizarControlesPaginacao() {
             const controlesPaginacao = document.getElementById('controles-paginacao');
@@ -812,84 +623,82 @@ function exibirLivros() {
         }
 
         // Função para ordenar os livros conforme a seleção
-function ordenarLivros(livros, tipoOrdenacao) {
-    // Criar uma cópia para não modificar o array original
-    const livrosOrdenados = [...livros];
-    
-    switch(tipoOrdenacao) {
-        case 'titulo-az':
-            return livrosOrdenados.sort((a, b) => 
-                a.titulo.localeCompare(b.titulo, 'pt-BR', { sensitivity: 'base' })
-            );
+        function ordenarLivros(livros, tipoOrdenacao) {
+            const livrosOrdenados = [...livros];
             
-        case 'titulo-za':
-            return livrosOrdenados.sort((a, b) => 
-                b.titulo.localeCompare(a.titulo, 'pt-BR', { sensitivity: 'base' })
-            );
+            switch(tipoOrdenacao) {
+                case 'titulo-az':
+                    return livrosOrdenados.sort((a, b) => 
+                        a.titulo.localeCompare(b.titulo, 'pt-BR', { sensitivity: 'base' })
+                    );
+                    
+                case 'titulo-za':
+                    return livrosOrdenados.sort((a, b) => 
+                        b.titulo.localeCompare(a.titulo, 'pt-BR', { sensitivity: 'base' })
+                    );
+                    
+                case 'autor-az':
+                    return livrosOrdenados.sort((a, b) => 
+                        a.autor.localeCompare(b.autor, 'pt-BR', { sensitivity: 'base' })
+                    );
+                    
+                case 'categoria':
+                    return livrosOrdenados.sort((a, b) => {
+                        const catCompare = (a.categoria || '').localeCompare(b.categoria || '', 'pt-BR');
+                        return catCompare !== 0 ? catCompare : 
+                            a.titulo.localeCompare(b.titulo, 'pt-BR');
+                    });
+                    
+                case 'aleatoria':
+                default:
+                    return aleatorizarArray(livrosOrdenados);
+            }
+        }
+
+        // Função para aleatorizar
+        function aleatorizarArray(array) {
+            var currentIndex = array.length, temporaryValue, randomIndex;
             
-        case 'autor-az':
-            return livrosOrdenados.sort((a, b) => 
-                a.autor.localeCompare(b.autor, 'pt-BR', { sensitivity: 'base' })
-            );
+            while (0 !== currentIndex) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+                
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
             
-        case 'categoria':
-            return livrosOrdenados.sort((a, b) => {
-                // Primeiro ordena por categoria, depois por título
-                const catCompare = (a.categoria || '').localeCompare(b.categoria || '', 'pt-BR');
-                return catCompare !== 0 ? catCompare : 
-                    a.titulo.localeCompare(b.titulo, 'pt-BR');
+            return array;
+        }
+        
+        function filtrarLivros() {
+            const termoBusca = document.getElementById('busca').value.toLowerCase();
+            const categoriaSelecionada = document.getElementById('filtro-categoria').value;
+            const ordenacaoSelecionada = document.getElementById('ordenacao').value;
+            
+            // Resetar para a primeira página ao filtrar
+            paginaAtual = 1;
+            
+            livrosFiltrados = todosLivros.filter(livro => {
+                const correspondeBusca = !termoBusca || 
+                    (livro.titulo && livro.titulo.toLowerCase().includes(termoBusca)) || 
+                    (livro.autor && livro.autor.toLowerCase().includes(termoBusca));
+                
+                const correspondeCategoria = !categoriaSelecionada || 
+                    livro.categoria === categoriaSelecionada;
+                
+                return correspondeBusca && correspondeCategoria;
             });
             
-        case 'aleatoria':
-        default:
-            return aleatorizarArray(livrosOrdenados);
-    }
-}
-
-// Função para aleatorizar (já existente, mas atualizada)
-function aleatorizarArray(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-    
-    while (0 !== currentIndex) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-    
-    return array;
-}
-        
-       function filtrarLivros() {
-    const termoBusca = document.getElementById('busca').value.toLowerCase();
-    const categoriaSelecionada = document.getElementById('filtro-categoria').value;
-    const ordenacaoSelecionada = document.getElementById('ordenacao').value;
-    
-    // Resetar para a primeira página ao filtrar
-    paginaAtual = 1;
-    
-    livrosFiltrados = todosLivros.filter(livro => {
-        const correspondeBusca = !termoBusca || 
-            livro.titulo.toLowerCase().includes(termoBusca) || 
-            livro.autor.toLowerCase().includes(termoBusca);
-        
-        const correspondeCategoria = !categoriaSelecionada || 
-            livro.categoria === categoriaSelecionada;
-        
-        return correspondeBusca && correspondeCategoria;
-    });
-    
-    // Aplicar ordenação
-    livrosFiltrados = ordenarLivros(livrosFiltrados, ordenacaoSelecionada);
-    
-    // Atualizar estatísticas
-    atualizarEstatisticas();
-    
-    // Exibir livros filtrados
-    exibirLivros();
-}
+            // Aplicar ordenação
+            livrosFiltrados = ordenarLivros(livrosFiltrados, ordenacaoSelecionada);
+            
+            // Atualizar estatísticas
+            atualizarEstatisticas();
+            
+            // Exibir livros filtrados
+            exibirLivros();
+        }
         
         // Atualizar estatísticas
         function atualizarEstatisticas() {
@@ -898,6 +707,31 @@ function aleatorizarArray(array) {
             document.getElementById('total-categorias').textContent = categoriasUnicas.size;
         }
         
+        // Função para detectar parâmetros na URL
+        function verificarParametrosUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const livroParam = urlParams.get('livro');
+            
+            if (livroParam) {
+                const livroEncontrado = todosLivros.find(livro => 
+                    livro.titulo && livro.titulo.toLowerCase().replace(/\s+/g, '-') === livroParam
+                );
+                
+                if (livroEncontrado) {
+                    setTimeout(() => {
+                        const card = document.querySelector(`[data-livro="${livroParam}"]`);
+                        if (card) {
+                            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            card.style.boxShadow = '0 0 0 3px var(--cor-primaria)';
+                            setTimeout(() => {
+                                card.style.boxShadow = '';
+                            }, 3000);
+                        }
+                    }, 1000);
+                }
+            }
+        }
+
         // Função para forçar atualização dos dados
         function atualizarDados() {
             document.getElementById('livros-container').innerHTML = `
@@ -908,34 +742,6 @@ function aleatorizarArray(array) {
             `;
             carregarLivrosDaPlanilha();
         }
-
-        // Função para detectar parâmetros na URL (para links diretos)
-function verificarParametrosUrl() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const livroParam = urlParams.get('livro');
-    
-    if (livroParam) {
-        // Buscar livro pelo título
-        const livroEncontrado = todosLivros.find(livro => 
-            livro.titulo.toLowerCase().replace(/\s+/g, '-') === livroParam
-        );
-        
-        if (livroEncontrado) {
-            // Rolagem suave para o livro
-            setTimeout(() => {
-                const card = document.querySelector(`[data-livro="${livroParam}"]`);
-                if (card) {
-                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    card.style.boxShadow = '0 0 0 3px var(--cor-primaria)';
-                    setTimeout(() => {
-                        card.style.boxShadow = '';
-                    }, 3000);
-                }
-            }, 1000);
-        }
-    }
-}
-
     </script>
 </body>
 </html>
