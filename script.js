@@ -149,25 +149,28 @@ function exibirLivros() {
     container.innerHTML = '';
     
     livrosPagina.forEach((livro, index) => {
-        const card = document.createElement('div');
-        card.className = 'card-livro';
-        card.setAttribute('data-livro', livro.titulo.toLowerCase().replace(/\s+/g, '-'));
-        
-        card.innerHTML = `
-            <div class="capa-container">
-                <img src="${livro.capa}" alt="Capa do livro ${livro.titulo}" class="card-capa"
-                     onerror="this.src='https://via.placeholder.com/200x300?text=Imagem+Não+Encontrada'">
-                <button class="icone-compartilhar" onclick="compartilharLivro('${livro.titulo.replace(/'/g, "\\'")}', '${livro.autor.replace(/'/g, "\\'")}', '${livro.link}')">↗</button>
-            </div>
-            <div class="card-corpo">
-                <h3 class="card-titulo">${livro.titulo}</h3>
-                <p class="card-autor">${livro.autor}</p>
-                ${livro.categoria ? `<span class="card-categoria">${livro.categoria}</span>` : ''}
-                <a href="${livro.link}" target="_blank" class="card-botao">📖 Ler Livro</a>
-            </div>
-        `;
-        container.appendChild(card);
-    });
+    const card = document.createElement('div');
+    card.className = 'card-livro';
+    card.setAttribute('data-livro', livro.titulo.toLowerCase().replace(/\s+/g, '-'));
+    
+    // VERIFICAR SE É UM LIVRO RECENTE (últimos 20 adicionados)
+    const isRecent = livro.indice_entrada >= (todosLivros.length - 20);
+    
+    card.innerHTML = `
+        <div class="capa-container ${isRecent ? 'livro-recente' : ''}">
+            <img src="${livro.capa}" alt="Capa do livro ${livro.titulo}" class="card-capa"
+                 onerror="this.src='https://via.placeholder.com/200x300?text=Imagem+Não+Encontrada'">
+            <button class="icone-compartilhar" onclick="compartilharLivro('${livro.titulo.replace(/'/g, "\\'")}', '${livro.autor.replace(/'/g, "\\'")}', '${livro.link}')">↗</button>
+        </div>
+        <div class="card-corpo">
+            <h3 class="card-titulo">${livro.titulo}</h3>
+            <p class="card-autor">${livro.autor}</p>
+            ${livro.categoria ? `<span class="card-categoria">${livro.categoria}</span>` : ''}
+            <a href="${livro.link}" target="_blank" class="card-botao">📖 Ler Livro</a>
+        </div>
+    `;
+    container.appendChild(card);
+});
     
     // Atualizar controles de paginação
     atualizarControlesPaginacao();
