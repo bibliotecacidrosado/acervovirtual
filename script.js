@@ -55,14 +55,25 @@ async function carregarDadosFallback() {
                        
 // Processar livros recebidos
 function processarLivros(livros) {
-    console.log('Livros recebidos:', livros); // Debug
+    console.log('Livros recebidos:', livros);
     
     if (!Array.isArray(livros)) {
         throw new Error('Dados não são um array');
     }
     
-    todosLivros = livros;
-    livrosFiltrados = [...livros];
+    // Adicionar um índice baseado na ordem de entrada (últimos adicionados ficam no final do array)
+    todosLivros = livros.map((livro, index) => {
+        return {
+            ...livro,
+            indice_entrada: index // Quanto maior o índice, mais recente
+        };
+    });
+    
+    // Ordenar por índice de entrada (mais recentes primeiro)
+    livrosFiltrados = ordenarLivros(todosLivros, 'recentes');
+    
+    // Definir a opção selecionada no dropdown como "Mais Recentes"
+    document.getElementById('ordenacao').value = 'recentes';
     
     // Coletar categorias únicas
     categoriasUnicas.clear();
