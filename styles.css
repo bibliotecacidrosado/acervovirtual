@@ -484,3 +484,18 @@ body {
         justify-content: center;
     }
 }
+
+/* Indicador de livro recente */
+.livro-recente::before {
+    content: 'NOVO';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--cor-primaria);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    z-index: 5;
+}
