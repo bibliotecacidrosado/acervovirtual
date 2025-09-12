@@ -294,6 +294,17 @@ function ordenarLivros(livros, tipoOrdenacao) {
     const livrosOrdenados = [...livros];
     
     switch(tipoOrdenacao) {
+        case 'recentes':
+            // Ordenar por índice de entrada (mais recentes primeiro)
+            return livrosOrdenados.sort((a, b) => {
+                // Se não tiver índice de entrada, manter ordem original
+                if (a.indice_entrada === undefined && b.indice_entrada === undefined) return 0;
+                if (a.indice_entrada === undefined) return 1; // Sem índice vai para o final
+                if (b.indice_entrada === undefined) return -1; // Sem índice vai para o final
+                
+                return b.indice_entrada - a.indice_entrada; // Maior índice primeiro (mais recente)
+            });
+            
         case 'titulo-az':
             return livrosOrdenados.sort((a, b) => 
                 a.titulo.localeCompare(b.titulo, 'pt-BR', { sensitivity: 'base' })
