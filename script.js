@@ -140,6 +140,32 @@ function exibirLivros() {
         controlesPaginacao.style.display = 'none';
         return;
     }
+
+    // Adicionar em script.js após exibirLivros()
+function observarImagens() {
+    const imagens = document.querySelectorAll('.card-capa');
+    
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const src = img.getAttribute('data-src');
+                    if (src) {
+                        img.src = src;
+                        img.removeAttribute('data-src');
+                    }
+                    observer.unobserve(img);
+                }
+            });
+        }, { rootMargin: '50px 0px' });
+        
+        imagens.forEach(img => observer.observe(img));
+    }
+}
+
+// Modificar a geração das imagens para usar data-src
+// <img data-src="${livro.capa}" src="placeholder.jpg" class="card-capa">
     
     // Calcular índices para a página atual
     const indiceInicio = (paginaAtual - 1) * livrosPorPagina;
