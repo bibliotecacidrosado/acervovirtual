@@ -86,10 +86,11 @@ body {
     background-color: white;
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
-    min-width: 200px;
+    min-width: 200px; /* Reduzi para caber melhor */
     transition: var(--transicao);
 }
 
+/* Adicione esta media query para mobile */
 @media (max-width: 768px) {
     .controles select {
         min-width: auto;
@@ -156,6 +157,12 @@ body {
     flex-direction: column;
 }
 
+/* Ícone de compartilhamento no card */
+.card-livro {
+    position: relative; /* Necessário para posicionar o ícone absolutamente */
+    /* mantém os outros estilos */
+}
+
 .card-livro:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
@@ -215,6 +222,131 @@ body {
 
 .card-botao:hover {
     background-color: var(--cor-secundaria);
+}
+
+/* Container da capa com ícone flutuante */
+.capa-container {
+    position: relative;
+    width: 100%;
+    height: 220px;
+}
+
+/* Ícone de compartilhamento responsivo */
+.icone-compartilhar {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 10;
+    font-size: 16px;
+}
+
+.icone-compartilhar:hover {
+    background: var(--cor-primaria);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .icone-compartilhar {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+        top: 6px;
+        right: 6px;
+    }
+}
+
+/* Efeito de tooltip para desktop */
+@media (min-width: 769px) {
+    .icone-compartilhar {
+        position: relative;
+    }
+    
+    .icone-compartilhar::before {
+        content: 'Compartilhar';
+        position: absolute;
+        top: -30px;
+        right: 0;
+        background: #333;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+    
+    .icone-compartilhar:hover::before {
+        opacity: 1;
+    }
+}
+
+/* Modal de compartilhamento */
+.modal-compartilhar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
+
+.modal-botoes {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.btn-compartilhar {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transicao);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-whatsapp { background: #25D366; color: white; }
+.btn-copiar { background: #FF6D00; color: white; }
+.btn-email { background: #EA4335; color: white; }
+.btn-fechar { background: #666; color: white; }
+
+.btn-compartilhar:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
 }
 
 .sem-resultados {
