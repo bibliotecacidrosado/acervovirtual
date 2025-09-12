@@ -86,16 +86,8 @@ body {
     background-color: white;
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
-    min-width: 200px; /* Reduzi para caber melhor */
+    min-width: 200px;
     transition: var(--transicao);
-}
-
-/* Adicione esta media query para mobile */
-@media (max-width: 768px) {
-    .controles select {
-        min-width: auto;
-        width: 100%;
-    }
 }
 
 .info-box {
@@ -155,17 +147,18 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-}
-
-/* Ícone de compartilhamento no card */
-.card-livro {
-    position: relative; /* Necessário para posicionar o ícone absolutamente */
-    /* mantém os outros estilos */
+    position: relative;
 }
 
 .card-livro:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.capa-container {
+    position: relative;
+    width: 100%;
+    height: 220px;
 }
 
 .card-capa {
@@ -224,76 +217,32 @@ body {
     background-color: var(--cor-secundaria);
 }
 
-/* Container da capa com ícone flutuante */
-.capa-container {
-    position: relative;
-    width: 100%;
-    height: 220px;
-}
-
-/* Ícone de compartilhamento responsivo */
+/* Ícone de compartilhamento discreto */
 .icone-compartilhar {
     position: absolute;
-    top: 8px;
-    right: 8px;
-    background: rgba(255, 255, 255, 0.95);
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.9);
     border: none;
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     transition: all 0.3s ease;
     z-index: 10;
-    font-size: 16px;
+    font-size: 14px;
+    opacity: 0.7;
 }
 
 .icone-compartilhar:hover {
+    opacity: 1;
     background: var(--cor-primaria);
     color: white;
     transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-    .icone-compartilhar {
-        width: 32px;
-        height: 32px;
-        font-size: 14px;
-        top: 6px;
-        right: 6px;
-    }
-}
-
-/* Efeito de tooltip para desktop */
-@media (min-width: 769px) {
-    .icone-compartilhar {
-        position: relative;
-    }
-    
-    .icone-compartilhar::before {
-        content: 'Compartilhar';
-        position: absolute;
-        top: -30px;
-        right: 0;
-        background: #333;
-        color: white;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 0.7rem;
-        white-space: nowrap;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-    }
-    
-    .icone-compartilhar:hover::before {
-        opacity: 1;
-    }
 }
 
 /* Modal de compartilhamento */
@@ -310,6 +259,10 @@ body {
     align-items: center;
 }
 
+.modal-compartilhar.ativo {
+    display: flex;
+}
+
 .modal-content {
     background: white;
     padding: 2rem;
@@ -317,6 +270,7 @@ body {
     max-width: 500px;
     width: 90%;
     text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .modal-botoes {
@@ -408,6 +362,61 @@ body {
     margin: 0 10px;
 }
 
+/* Novos estilos para paginação avançada */
+.paginacao-numeros {
+    display: flex;
+    gap: 5px;
+    margin: 0 10px;
+}
+
+.btn-pagina {
+    padding: 6px 12px;
+    background-color: white;
+    color: var(--cor-texto);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transicao);
+}
+
+.btn-pagina:hover {
+    background-color: var(--cor-fundo);
+}
+
+.btn-pagina.ativa {
+    background-color: var(--cor-primaria);
+    color: white;
+    border-color: var(--cor-primaria);
+}
+
+.paginacao-seletor {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 15px;
+}
+
+.paginacao-seletor input {
+    width: 50px;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.paginacao-seletor button {
+    padding: 6px 10px;
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.paginacao-seletor button:hover {
+    background-color: var(--cor-secundaria);
+}
+
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
@@ -429,33 +438,4 @@ body {
         flex-direction: column;
     }
     
-    .controles input, .controles select {
-        min-width: auto;
-        width: 100%;
-    }
-    
-    .grid-livros {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
-    
-    .controles-paginacao {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .grid-livros {
-        grid-template-columns: 1fr;
-    }
-    
-    .estatisticas {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .estatistica-item {
-        width: 100%;
-        max-width: 250px;
-    }
-}
+    .controles input, .controles
