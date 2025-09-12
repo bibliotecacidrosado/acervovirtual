@@ -5,11 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca Virtual - GitHub Pages + Google Sheets</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <!-- Favicon padrão -->
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" type="image/png">
+    
+    <!-- Apple Touch Icon (iPhone, iPad) -->
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2232/2232688.png">
+    
+    <!-- Android Chrome -->
     <link rel="icon" sizes="192x192" href="https://cdn-icons-png.flaticon.com/512/2232/2232688.png">
+    
+    <!-- Microsoft Tiles -->
     <meta name="msapplication-TileImage" content="https://cdn-icons-png.flaticon.com/512/2232/2232688.png">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="header">
@@ -28,6 +35,7 @@
             <select id="filtro-categoria" onchange="filtrarLivros()">
                 <option value="">Todas as categorias</option>
             </select>
+            <!-- NOVO SELECT DE ORDENAÇÃO -->
             <select id="ordenacao" onchange="filtrarLivros()">
                 <option value="aleatoria">🎲 Ordem Aleatória</option>
                 <option value="titulo-az">📖 Título (A-Z)</option>
