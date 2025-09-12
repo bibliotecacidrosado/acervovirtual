@@ -438,4 +438,49 @@ body {
         flex-direction: column;
     }
     
-    .controles input, .controles
+    .controles input, .controles select {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .grid-livros {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .controles-paginacao {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .paginacao-numeros {
+        order: 3;
+        margin-top: 10px;
+    }
+    
+    .paginacao-seletor {
+        order: 4;
+        margin-top: 10px;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-livros {
+        grid-template-columns: 1fr;
+    }
+    
+    .estatisticas {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .estatistica-item {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .paginacao-numeros {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
