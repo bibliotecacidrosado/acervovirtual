@@ -4,6 +4,7 @@ let livrosFiltrados = [];
 let categoriasUnicas = new Set();
 let paginaAtual = 1;
 const livrosPorPagina = 10;
+let livroParaCompartilhar = null;
 
 // Carregar dados quando a página for carregada
 document.addEventListener('DOMContentLoaded', function() {
@@ -51,7 +52,7 @@ async function carregarDadosFallback() {
         console.error('Também falhou ao carregar fallback:', error);
     }
 }
-                   
+                       
 // Processar livros recebidos
 function processarLivros(livros) {
     console.log('Livros recebidos:', livros); // Debug
@@ -142,9 +143,11 @@ function exibirLivros() {
         card.setAttribute('data-livro', livro.titulo.toLowerCase().replace(/\s+/g, '-'));
         
         card.innerHTML = `
-            <img src="${livro.capa}" alt="Capa do livro ${livro.titulo}" class="card-capa"
-                onerror="this.src='https://via.placeholder.com/200x300?text=Imagem+Não+Encontrada'">
-            
+            <div class="capa-container">
+                <img src="${livro.capa}" alt="Capa do livro ${livro.titulo}" class="card-capa"
+                     onerror="this.src='https://via.placeholder.com/200x300?text=Imagem+Não+Encontrada'">
+                <button class="icone-compartilhar" onclick="compartilharLivro('${livro.titulo.replace(/'/g, "\\'")}', '${livro.autor.replace(/'/g, "\\'")}', '${livro.link}')">↗</button>
+            </div>
             <div class="card-corpo">
                 <h3 class="card-titulo">${livro.titulo}</h3>
                 <p class="card-autor">${livro.autor}</p>
@@ -170,11 +173,79 @@ function atualizarControlesPaginacao() {
     }
     
     controlesPaginacao.style.display = 'flex';
-    document.getElementById('pagina-atual').textContent = `Página ${paginaAtual} de ${totalPaginas}`;
     
-    // Habilitar/desabilitar botões
+    // Atualizar números de página
+    const paginacaoNumeros = document.getElementById('paginacao-numeros');
+    paginacaoNumeros.innerHTML = '';
+    
+    // Calcular quais números de página mostrar
+    let inicioPagina = Math.max(1, paginaAtual - 2);
+    let fimPagina = Math.min(totalPaginas, inicioPagina + 4);
+    
+    // Ajustar se estiver no final
+    if (fimPagina - inicioPagina < 4) {
+        inicioPagina = Math.max(1, fimPagina - 4);
+    }
+    
+    // Botão para primeira página
+    if (inicioPagina > 1) {
+        const btn = document.createElement('button');
+        btn.className = 'btn-pagina';
+        btn.textContent = '1';
+        btn.onclick = () => irParaPagina(1);
+        paginacaoNumeros.appendChild(btn);
+        
+        if (inicioPagina > 2) {
+            const ellipsis = document.createElement('span');
+            ellipsis.textContent = '...';
+            ellipsis.style.padding = '6px';
+            paginacaoNumeros.appendChild(ellipsis);
+        }
+    }
+    
+    // Botões para páginas numeradas
+    for (let i = inicioPagina; i <= fimPagina; i++) {
+        const btn = document.createElement('button');
+        btn.className = 'btn-pagina' + (i === paginaAtual ? ' ativa' : '');
+        btn.textContent = i;
+        btn.onclick = () => irParaPagina(i);
+        paginacaoNumeros.appendChild(btn);
+    }
+    
+    // Botão para última página
+    if (fimPagina < totalPaginas) {
+        if (fimPagina < totalPaginas - 1) {
+            const ellipsis = document.createElement('span');
+            ellipsis.textContent = '...';
+            ellipsis.style.padding = '6px';
+            paginacaoNumeros.appendChild(ellipsis);
+        }
+        
+        const btn = document.createElement('button');
+        btn.className = 'btn-pagina';
+        btn.textContent = totalPaginas;
+        btn.onclick = () => irParaPagina(totalPaginas);
+        paginacaoNumeros.appendChild(btn);
+    }
+    
+    // Habilitar/desabilitar botões de navegação
     document.getElementById('pagina-anterior').disabled = (paginaAtual === 1);
     document.getElementById('proxima-pagina').disabled = (paginaAtual === totalPaginas);
+    
+    // Atualizar campo de pular para página
+    document.getElementById('pular-para-pagina').value = paginaAtual;
+    document.getElementById('pular-para-pagina').max = totalPaginas;
+}
+
+// Ir para página específica
+function irParaPagina(numeroPagina) {
+    const totalPaginas = Math.ceil(livrosFiltrados.length / livrosPorPagina);
+    
+    if (numeroPagina >= 1 && numeroPagina <= totalPaginas) {
+        paginaAtual = numeroPagina;
+        exibirLivros();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 }
 
 // Ir para página anterior
@@ -193,6 +264,16 @@ function proximaPagina() {
         paginaAtual++;
         exibirLivros();
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+
+// Pular para página específica
+function pularParaPagina() {
+    const input = document.getElementById('pular-para-pagina');
+    const pagina = parseInt(input.value);
+    
+    if (!isNaN(pagina)) {
+        irParaPagina(pagina);
     }
 }
 
@@ -231,7 +312,7 @@ function ordenarLivros(livros, tipoOrdenacao) {
     }
 }
 
-// Função para aleatorizar (já existente, mas atualizada)
+// Função para aleatorizar
 function aleatorizarArray(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
     
@@ -320,3 +401,55 @@ function verificarParametrosUrl() {
         }
     }
 }
+
+// FUNÇÕES DE COMPARTILHAMENTO
+
+// Função para abrir o modal de compartilhamento
+function compartilharLivro(titulo, autor, link) {
+    livroParaCompartilhar = { titulo, autor, link };
+    document.getElementById('modalTituloLivro').textContent = titulo;
+    document.getElementById('modalCompartilhar').classList.add('ativo');
+}
+
+// Função para fechar o modal
+function fecharModal() {
+    document.getElementById('modalCompartilhar').classList.remove('ativo');
+}
+
+// Compartilhar via WhatsApp
+function compartilharWhatsApp() {
+    const texto = `Confira o livro "${livroParaCompartilhar.titulo}" de ${livroParaCompartilhar.autor} na Biblioteca Virtual: ${livroParaCompartilhar.link}`;
+    const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
+    window.open(url, '_blank');
+    fecharModal();
+}
+
+// Copiar link para a área de transferência
+function copiarLink() {
+    navigator.clipboard.writeText(livroParaCompartilhar.link)
+        .then(() => {
+            alert('Link copiado para a área de transferência!');
+            fecharModal();
+        })
+        .catch(err => {
+            console.error('Erro ao copiar link: ', err);
+            alert('Não foi possível copiar o link. Tente novamente.');
+        });
+}
+
+// Compartilhar via email
+function compartilharEmail() {
+    const assunto = `Recomendação de livro: ${livroParaCompartilhar.titulo}`;
+    const corpo = `Olá,\n\nRecomendo que você confira o livro "${livroParaCompartilhar.titulo}" de ${livroParaCompartilhar.autor}.\n\nAcesse em: ${livroParaCompartilhar.link}`;
+    const url = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+    window.location.href = url;
+    fecharModal();
+}
+
+// Fechar modal ao clicar fora dele
+document.addEventListener('click', function(event) {
+    const modal = document.getElementById('modalCompartilhar');
+    if (event.target === modal) {
+        fecharModal();
+    }
+});
