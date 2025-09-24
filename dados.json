@@ -474,5 +474,19 @@
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1JtIAwvfFmqtHwjvHNtArn-Ofqdr5Yvaf",
     "capa": "https://drive.google.com/thumbnail?id=1LDHpbNWtutCXKQtXPZwud8dmZ5U3Gjy3&sz=w400"
+  },
+  {
+    "titulo": "O retorno",
+    "autor": "Andrei Platonov",
+    "categoria": "História",
+    "link": "https://drive.google.com/open?id=1o7Rso2Euy6L5zmW982zlCfagPFvaSOtq",
+    "capa": "https://drive.google.com/thumbnail?id=13n_HPC4Nkkyo2pGG7oCHDXmuH_FEvkX_&sz=w400"
+  },
+  {
+    "titulo": "Helena",
+    "autor": "Machado de Assis",
+    "categoria": "Literatura",
+    "link": "https://drive.google.com/open?id=1Gf2ocSNQX1t-2NsOt1H8nSpdeoCwNqK1",
+    "capa": "https://drive.google.com/thumbnail?id=1s2QmPUqULC6yi2cSxiDF7CkSoYSLys1q&sz=w400"
   }
 ]
