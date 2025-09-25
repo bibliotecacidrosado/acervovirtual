@@ -490,7 +490,13 @@ function fecharModal() {
 
 // Compartilhar via WhatsApp
 function compartilharWhatsApp() {
-    const texto = `Confira o livro "${livroParaCompartilhar.titulo}" de ${livroParaCompartilhar.autor} na Biblioteca Virtual: ${livroParaCompartilhar.link}`;
+    const texto = `📚 ${livroParaCompartilhar.titulo}
+✍️ ${livroParaCompartilhar.autor}
+
+${livroParaCompartilhar.link}
+
+💡 O WhatsApp mostrará a capa automaticamente!`;
+    
     const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
     window.open(url, '_blank');
     fecharModal();
