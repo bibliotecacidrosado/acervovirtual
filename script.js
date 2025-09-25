@@ -143,32 +143,6 @@ function exibirLivros() {
         return;
     }
 
-    // Adicionar em script.js após exibirLivros()
-function observarImagens() {
-    const imagens = document.querySelectorAll('.card-capa');
-    
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    const src = img.getAttribute('data-src');
-                    if (src) {
-                        img.src = src;
-                        img.removeAttribute('data-src');
-                    }
-                    observer.unobserve(img);
-                }
-            });
-        }, { rootMargin: '50px 0px' });
-        
-        imagens.forEach(img => observer.observe(img));
-    }
-}
-
-// Modificar a geração das imagens para usar data-src
-// <img data-src="${livro.capa}" src="placeholder.jpg" class="card-capa">
-    
     // Calcular índices para a página atual
     const indiceInicio = (paginaAtual - 1) * livrosPorPagina;
     const indiceFim = indiceInicio + livrosPorPagina;
@@ -177,28 +151,28 @@ function observarImagens() {
     container.innerHTML = '';
     
     livrosPagina.forEach((livro, index) => {
-    const card = document.createElement('div');
-    card.className = 'card-livro';
-    card.setAttribute('data-livro', livro.titulo.toLowerCase().replace(/\s+/g, '-'));
-    
-    // VERIFICAR SE É UM LIVRO RECENTE (últimos 20 adicionados)
-    const isRecent = livro.indice_entrada >= (todosLivros.length - 20);
-    
-    card.innerHTML = `
-        <div class="capa-container ${isRecent ? 'livro-recente' : ''}">
-            <img src="${livro.capa}" alt="Capa do livro ${livro.titulo}" class="card-capa"
-                 onerror="this.src='https://via.placeholder.com/200x300?text=Imagem+Não+Encontrada'">
-            <button class="icone-compartilhar" onclick="compartilharLivro('${livro.titulo.replace(/'/g, "\\'")}', '${livro.autor.replace(/'/g, "\\'")}', '${livro.link}')">↗</button>
-        </div>
-        <div class="card-corpo">
-            <h3 class="card-titulo">${livro.titulo}</h3>
-            <p class="card-autor">${livro.autor}</p>
-            ${livro.categoria ? `<span class="card-categoria">${livro.categoria}</span>` : ''}
-            <a href="${livro.link}" target="_blank" class="card-botao">📖 Ler Livro</a>
-        </div>
-    `;
-    container.appendChild(card);
-});
+        const card = document.createElement('div');
+        card.className = 'card-livro';
+        card.setAttribute('data-livro', livro.titulo.toLowerCase().replace(/\s+/g, '-'));
+        
+        // VERIFICAR SE É UM LIVRO RECENTE (últimos 20 adicionados)
+        const isRecent = livro.indice_entrada >= (todosLivros.length - 20);
+        
+        card.innerHTML = `
+            <div class="capa-container ${isRecent ? 'livro-recente' : ''}">
+                <img src="${livro.capa}" alt="Capa do livro ${livro.titulo}" class="card-capa"
+                     onerror="this.src='https://via.placeholder.com/200x300?text=Imagem+Não+Encontrada'">
+                <button class="icone-compartilhar" onclick="compartilharLivro('${livro.titulo.replace(/'/g, "\\'")}', '${livro.autor.replace(/'/g, "\\'")}', '${livro.link}', '${livro.capa}')">↗</button>
+            </div>
+            <div class="card-corpo">
+                <h3 class="card-titulo">${livro.titulo}</h3>
+                <p class="card-autor">${livro.autor}</p>
+                ${livro.categoria ? `<span class="card-categoria">${livro.categoria}</span>` : ''}
+                <a href="${livro.link}" target="_blank" class="card-botao">📖 Ler Livro</a>
+            </div>
+        `;
+        container.appendChild(card);
+    });
     
     // Atualizar controles de paginação
     atualizarControlesPaginacao();
@@ -474,12 +448,19 @@ function verificarParametrosUrl() {
     }
 }
 
-// FUNÇÕES DE COMPARTILHAMENTO
+// =============================================
+// FUNÇÕES DE COMPARTILHAMENTO ATUALIZADAS
+// =============================================
 
 // Função para abrir o modal de compartilhamento
-function compartilharLivro(titulo, autor, link) {
-    livroParaCompartilhar = { titulo, autor, link };
+function compartilharLivro(titulo, autor, link, capa) {
+    livroParaCompartilhar = { titulo, autor, link, capa };
+    
+    // Atualizar o modal com as informações do livro
     document.getElementById('modalTituloLivro').textContent = titulo;
+    document.getElementById('modalAutorLivro').textContent = autor;
+    document.getElementById('modalCapaPreview').src = capa;
+    
     document.getElementById('modalCompartilhar').classList.add('ativo');
 }
 
@@ -488,37 +469,57 @@ function fecharModal() {
     document.getElementById('modalCompartilhar').classList.remove('ativo');
 }
 
-// Compartilhar via WhatsApp
+// Compartilhar via WhatsApp com informações da capa
 function compartilharWhatsApp() {
-    const texto = `📚 ${livroParaCompartilhar.titulo}
-✍️ ${livroParaCompartilhar.autor}
+    const texto = `📚 *${livroParaCompartilhar.titulo}*
+✍️ _${livroParaCompartilhar.autor}_
 
-${livroParaCompartilhar.link}
+🔗 ${livroParaCompartilhar.link}
 
-💡 O WhatsApp mostrará a capa automaticamente!`;
+📖 Acesse o link para ler o livro completo!`;
     
     const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
     window.open(url, '_blank');
     fecharModal();
 }
 
-// Copiar link para a área de transferência
+// Copiar link para a área de transferência com informações da capa
 function copiarLink() {
-    navigator.clipboard.writeText(livroParaCompartilhar.link)
+    const texto = `📖 ${livroParaCompartilhar.titulo}
+👤 ${livroParaCompartilhar.autor}
+🔗 ${livroParaCompartilhar.link}
+
+💡 Livro disponível na Biblioteca Digital Cid Rosado`;
+
+    navigator.clipboard.writeText(texto)
         .then(() => {
-            alert('Link copiado para a área de transferência!');
+            alert('✅ Link e informações copiados para a área de transferência!');
             fecharModal();
         })
         .catch(err => {
             console.error('Erro ao copiar link: ', err);
-            alert('Não foi possível copiar o link. Tente novamente.');
+            // Fallback: copiar apenas o link
+            navigator.clipboard.writeText(livroParaCompartilhar.link)
+                .then(() => alert('Link copiado!'))
+                .catch(() => alert('Não foi possível copiar o link. Tente novamente.'));
         });
 }
 
-// Compartilhar via email
+// Compartilhar via email com informações da capa
 function compartilharEmail() {
-    const assunto = `Recomendação de livro: ${livroParaCompartilhar.titulo}`;
-    const corpo = `Olá,\n\nRecomendo que você confira o livro "${livroParaCompartilhar.titulo}" de ${livroParaCompartilhar.autor}.\n\nAcesse em: ${livroParaCompartilhar.link}`;
+    const assunto = `📚 Recomendação de livro: ${livroParaCompartilhar.titulo}`;
+    const corpo = `Olá!
+
+Recomendo que você confira este livro incrível:
+
+📖 TÍTULO: ${livroParaCompartilhar.titulo}
+✍️ AUTOR: ${livroParaCompartilhar.autor}
+
+🔗 ACESSE AQUI: ${livroParaCompartilhar.link}
+
+Atenciosamente,
+Biblioteca Digital Cid Rosado`;
+    
     const url = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
     window.location.href = url;
     fecharModal();
@@ -555,4 +556,27 @@ function mostrarLoadingBusca() {
 function esconderLoadingBusca() {
     const buscaInput = document.getElementById('busca');
     buscaInput.classList.remove('buscando');
+}
+
+// Função para observar imagens (lazy loading)
+function observarImagens() {
+    const imagens = document.querySelectorAll('.card-capa');
+    
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const src = img.getAttribute('data-src');
+                    if (src) {
+                        img.src = src;
+                        img.removeAttribute('data-src');
+                    }
+                    observer.unobserve(img);
+                }
+            });
+        }, { rootMargin: '50px 0px' });
+        
+        imagens.forEach(img => observer.observe(img));
+    }
 }
