@@ -9,29 +9,6 @@
     --transicao: all 0.3s ease;
 }
 
-/* Skeleton Loading */
-.skeleton {
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 200% 100%;
-    animation: loading 1.5s infinite;
-    border-radius: 4px;
-}
-
-@keyframes loading {
-    0% {
-        background-position: 200% 0;
-    }
-    100% {
-        background-position: -200% 0;
-    }
-}
-
-@keyframes spin {
-    to { 
-        transform: rotate(360deg); 
-    }
-}
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -440,6 +417,10 @@ body {
     background-color: var(--cor-secundaria);
 }
 
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
 .footer {
     text-align: center;
     padding: 2rem;
@@ -522,25 +503,4 @@ body {
     font-weight: bold;
     z-index: 5;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-/* Estilos para o debounce loading */
-.buscando {
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FF6D00"><path d="M12 2a1 1 0 0 0-1 1v3a1 1 0 0 0 2 0V3a1 1 0 0 0-1-1zm0 15a1 1 0 0 0-1 1v3a1 1 0 0 0 2 0v-3a1 1 0 0 0-1-1zm8.66-10.66a1 1 0 0 0-1.41 0l-2.12 2.12a1 1 0 0 0 1.41 1.41l2.12-2.12a1 1 0 0 0 0-1.41zM7.07 17.07a1 1 0 0 0-1.41 0l-2.12 2.12a1 1 0 0 0 1.41 1.41l2.12-2.12a1 1 0 0 0 0-1.41zM22 12a1 1 0 0 0-1-1h-3a1 1 0 0 0 0 2h3a1 1 0 0 0 1-1zM5 12a1 1 0 0 0-1-1H1a1 1 0 0 0 0 2h3a1 1 0 0 0 1-1zm15.66 7.66a1 1 0 0 0-1.41-1.41l-2.12 2.12a1 1 0 0 0 1.41 1.41l2.12-2.12a1 1 0 0 0 0-1.41zM7.07 7.07a1 1 0 0 0-1.41-1.41l-2.12 2.12a1 1 0 0 0 1.41 1.41l2.12-2.12a1 1 0 0 0 0-1.41z"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 16px 16px;
-    padding-right: 35px;
-}
-
-.loading-busca {
-    text-align: center;
-    padding: 2rem;
-    grid-column: 1 / -1;
-}
-
-.loading-spinner.pequeno {
-    width: 30px;
-    height: 30px;
-    border-width: 3px;
 }
