@@ -382,6 +382,22 @@ function aleatorizarArray(array) {
 }
 
 function filtrarLivros() {
+    // Limpar o timeout anterior se existir
+    if (timeoutBusca) {
+        clearTimeout(timeoutBusca);
+    }
+    
+    // Mostrar loading durante o debounce (opcional)
+    mostrarLoadingBusca();
+    
+    // Configurar novo timeout
+    timeoutBusca = setTimeout(() => {
+        executarFiltragem();
+    }, delayDebounce);
+}
+
+// Função que realmente executa a filtragem (separada do debounce)
+function executarFiltragem() {
     const termoBusca = document.getElementById('busca').value.toLowerCase();
     const categoriaSelecionada = document.getElementById('filtro-categoria').value;
     const ordenacaoSelecionada = document.getElementById('ordenacao').value;
@@ -408,6 +424,9 @@ function filtrarLivros() {
     
     // Exibir livros filtrados
     exibirLivros();
+    
+    // Esconder loading
+    esconderLoadingBusca();
 }
 
 // Atualizar estatísticas
@@ -507,3 +526,27 @@ document.addEventListener('click', function(event) {
     }
 });
 
+// Mostrar indicador de busca em andamento
+function mostrarLoadingBusca() {
+    const buscaInput = document.getElementById('busca');
+    const container = document.getElementById('livros-container');
+    
+    // Adicionar classe de loading no input
+    buscaInput.classList.add('buscando');
+    
+    // Mostrar loading apenas se já tiver dados carregados
+    if (todosLivros.length > 0) {
+        container.innerHTML = `
+            <div class="loading-busca">
+                <div class="loading-spinner pequeno"></div>
+                <p>Buscando...</p>
+            </div>
+        `;
+    }
+}
+
+// Esconder indicador de busca
+function esconderLoadingBusca() {
+    const buscaInput = document.getElementById('busca');
+    buscaInput.classList.remove('buscando');
+}
