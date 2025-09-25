@@ -552,3 +552,21 @@ body {
     height: 30px;
     border-width: 3px;
 }
+
+@media (prefers-color-scheme: dark) {
+    .card-livro {
+        background: #2d2d2d;
+        border: 1px solid #404040;
+    }
+    
+    .controles input, 
+    .controles select {
+        background: #2d2d2d;
+        border-color: #404040;
+        color: white;
+    }
+    
+    .estatistica-item {
+        background: #2d2d2d;
+    }
+}
