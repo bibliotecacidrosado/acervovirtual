@@ -217,7 +217,6 @@ body {
     background-color: var(--cor-secundaria);
 }
 
-/* Ícone de compartilhamento discreto */
 .icone-compartilhar {
     position: absolute;
     top: 10px;
@@ -245,7 +244,7 @@ body {
     transform: scale(1.1);
 }
 
-/* Modal de compartilhamento */
+/* Modal de Compartilhamento Atualizado */
 .modal-compartilhar {
     display: none;
     position: fixed;
@@ -271,6 +270,42 @@ body {
     width: 90%;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.preview-compartilhamento {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid var(--cor-primaria);
+}
+
+.capa-preview {
+    width: 60px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.info-preview h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--cor-primaria);
+    font-size: 1.1rem;
+}
+
+.info-preview p {
+    margin: 0 0 0.3rem 0;
+    color: var(--cor-texto-claro);
+    font-size: 0.9rem;
+}
+
+.info-preview small {
+    color: #28a745;
+    font-weight: 500;
 }
 
 .modal-botoes {
@@ -357,12 +392,6 @@ body {
     cursor: not-allowed;
 }
 
-.info-paginacao {
-    font-weight: 500;
-    margin: 0 10px;
-}
-
-/* Novos estilos para paginação avançada */
 .paginacao-numeros {
     display: flex;
     gap: 5px;
@@ -462,6 +491,11 @@ body {
         margin-top: 10px;
         margin-left: 0;
     }
+    
+    .preview-compartilhamento {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -483,9 +517,16 @@ body {
         flex-wrap: wrap;
         justify-content: center;
     }
+    
+    .modal-botoes {
+        flex-direction: column;
+    }
+    
+    .btn-compartilhar {
+        justify-content: center;
+    }
 }
 
-/* Indicador de livro recente */
 .livro-recente {
     position: relative;
 }
@@ -505,7 +546,6 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-/* Estilos para o debounce loading */
 .buscando {
     background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FF6D00"><path d="M12 2a1 1 0 0 0-1 1v3a1 1 0 0 0 2 0V3a1 1 0 0 0-1-1zm0 15a1 1 0 0 0-1 1v3a1 1 0 0 0 2 0v-3a1 1 0 0 0-1-1zm8.66-10.66a1 1 0 0 0-1.41 0l-2.12 2.12a1 1 0 0 0 1.41 1.41l2.12-2.12a1 1 0 0 0 0-1.41zM7.07 17.07a1 1 0 0 0-1.41 0l-2.12 2.12a1 1 0 0 0 1.41 1.41l2.12-2.12a1 1 0 0 0 0-1.41zM22 12a1 1 0 0 0-1-1h-3a1 1 0 0 0 0 2h3a1 1 0 0 0 1-1zM5 12a1 1 0 0 0-1-1H1a1 1 0 0 0 0 2h3a1 1 0 0 0 1-1zm15.66 7.66a1 1 0 0 0-1.41-1.41l-2.12 2.12a1 1 0 0 0 1.41 1.41l2.12-2.12a1 1 0 0 0 0-1.41zM7.07 7.07a1 1 0 0 0-1.41-1.41l-2.12 2.12a1 1 0 0 0 1.41 1.41l2.12-2.12a1 1 0 0 0 0-1.41z"/></svg>');
     background-repeat: no-repeat;
