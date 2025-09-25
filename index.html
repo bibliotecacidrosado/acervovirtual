@@ -31,7 +31,7 @@
         </div>
         
         <div class="controles">
-            <input type="text" id="busca" placeholder="Buscar por título ou autor..." onkeyup="filtrarLivros()">
+            <input type="text" id="busca" placeholder="Buscar por título ou autor..." oninput="filtrarLivros()">
             <select id="filtro-categoria" onchange="filtrarLivros()">
                 <option value="">Todas as categorias</option>
             </select>
@@ -114,4 +114,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
