@@ -9,16 +9,6 @@
     --transicao: all 0.3s ease;
 }
 
-/* Dark Mode Automático */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --cor-fundo: #1a1a1a;
-        --cor-texto: #ffffff;
-        --cor-texto-claro: #cccccc;
-        --sombra: 0 3px 10px rgba(0,0,0,0.3);
-    }
-}
-
 /* Skeleton Loading */
 .skeleton {
     background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
@@ -553,67 +543,4 @@ body {
     width: 30px;
     height: 30px;
     border-width: 3px;
-}
-
-/* Dark Mode Detalhado - NO FINAL DO ARQUIVO */
-@media (prefers-color-scheme: dark) {
-    .card-livro {
-        background: #2d2d2d;
-        border: 1px solid #404040;
-    }
-    
-    .controles input, 
-    .controles select {
-        background: #2d2d2d;
-        border-color: #404040;
-        color: white;
-    }
-    
-    .estatistica-item {
-        background: #2d2d2d;
-    }
-    
-    .controles {
-        background: #2d2d2d;
-    }
-    
-    .sem-resultados,
-    .loading-busca {
-        background: #2d2d2d;
-    }
-    
-    .controles input::placeholder {
-        color: #999;
-    }
-    
-    .info-box {
-        background-color: #1e3a1e;
-        border-left-color: #4caf50;
-    }
-    
-    .info-box h3 {
-        color: #81c784;
-    }
-    
-    .modal-content {
-        background: #2d2d2d;
-        color: white;
-    }
-    
-    .btn-pagina {
-        background: #404040;
-        color: white;
-        border-color: #555;
-    }
-    
-    .btn-pagina.ativa {
-        background: var(--cor-primaria);
-        border-color: var(--cor-primaria);
-    }
-    
-    .paginacao-seletor input {
-        background: #2d2d2d;
-        border-color: #404040;
-        color: white;
-    }
 }
