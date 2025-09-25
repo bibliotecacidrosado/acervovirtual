@@ -5,6 +5,8 @@ let categoriasUnicas = new Set();
 let paginaAtual = 1;
 const livrosPorPagina = 10;
 let livroParaCompartilhar = null;
+let timeoutBusca = null;
+const delayDebounce = 300; // 300ms de delay
 
 // Carregar dados quando a página for carregada
 document.addEventListener('DOMContentLoaded', function() {
@@ -504,3 +506,4 @@ document.addEventListener('click', function(event) {
         fecharModal();
     }
 });
+
