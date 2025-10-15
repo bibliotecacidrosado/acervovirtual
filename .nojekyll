@@ -1,0 +1,5 @@
+# Localmente no seu projeto
+echo "" > .nojekyll
+git add .nojekyll
+git commit -m "Add .nojekyll for static site"
+git push origin main
