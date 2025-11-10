@@ -24,11 +24,6 @@
     <link rel="icon" sizes="192x192" href="https://cdn-icons-png.flaticon.com/512/2232/2232688.png">
     <meta name="msapplication-TileImage" content="https://cdn-icons-png.flaticon.com/512/2232/2232688.png">
     
-    <!-- Meta tags para performance -->
-    <meta name="description" content="Acervo digital com obras em domínio público e publicações gratuitas. Literatura, filosofia, história e mais.">
-    <meta name="keywords" content="livros grátis, domínio público, biblioteca digital, literatura">
-    <link rel="canonical" href="https://bibliotecacidrosado.github.io/acervovirtual/">
-    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -44,11 +39,11 @@
         </div>
         
         <div class="controles">
-            <input type="text" id="busca" placeholder="Buscar por título ou autor..." oninput="filtrarLivros()" aria-label="Campo de busca">
-            <select id="filtro-categoria" onchange="filtrarLivros()" aria-label="Filtro de categoria">
+            <input type="text" id="busca" placeholder="Buscar por título ou autor..." oninput="filtrarLivros()">
+            <select id="filtro-categoria" onchange="filtrarLivros()">
                 <option value="">Todas as categorias</option>
             </select>
-            <select id="ordenacao" onchange="filtrarLivros()" aria-label="Ordenação">
+            <select id="ordenacao" onchange="filtrarLivros()">
                 <option value="recentes">🆕 Mais Recentes</option>
                 <option value="aleatoria">🎲 Ordem Aleatória</option>
                 <option value="titulo-az">📖 Título (A-Z)</option>
@@ -58,7 +53,7 @@
             </select>
         </div>
         
-        <div class="estatisticas" role="status" aria-live="polite">
+        <div class="estatisticas">
             <div class="estatistica-item">
                 <div class="estatistica-valor" id="total-livros">0</div>
                 <div class="estatistica-label">Livros no total</div>
@@ -73,29 +68,29 @@
             </div>
         </div>
         
-        <div class="grid-livros" id="livros-container" role="main">
+        <div class="grid-livros" id="livros-container">
             <div class="loading">
                 <div class="loading-spinner"></div>
                 <p>Carregando livros...</p>
             </div>
         </div>
         
-        <div class="controles-paginacao" id="controles-paginacao" role="navigation" aria-label="Navegação de páginas">
-            <button class="btn-paginacao" id="pagina-anterior" onclick="paginaAnterior()" aria-label="Página anterior">Anterior</button>
-            <div class="paginacao-numeros" id="paginacao-numeros" role="group" aria-label="Páginas"></div>
-            <button class="btn-paginacao" id="proxima-pagina" onclick="proximaPagina()" aria-label="Próxima página">Próxima</button>
+        <div class="controles-paginacao" id="controles-paginacao">
+            <button class="btn-paginacao" id="pagina-anterior" onclick="paginaAnterior()">Anterior</button>
+            <div class="paginacao-numeros" id="paginacao-numeros"></div>
+            <button class="btn-paginacao" id="proxima-pagina" onclick="proximaPagina()">Próxima</button>
             <div class="paginacao-seletor">
                 <span>Ir para:</span>
-                <input type="number" id="pular-para-pagina" min="1" value="1" aria-label="Número da página">
-                <button onclick="pularParaPagina()" aria-label="Ir para página">Ir</button>
+                <input type="number" id="pular-para-pagina" min="1" value="1">
+                <button onclick="pularParaPagina()">Ir</button>
             </div>
         </div>
     </div>
     
-    <!-- Modal de Compartilhamento -->
-    <div class="modal-compartilhar" id="modalCompartilhar" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+    <!-- Modal de Compartilhamento Atualizado -->
+    <div class="modal-compartilhar" id="modalCompartilhar">
         <div class="modal-content">
-            <h3 id="modal-titulo">📤 Compartilhar Livro</h3>
+            <h3>📤 Compartilhar Livro</h3>
             
             <div class="preview-compartilhamento">
                 <img src="" alt="Capa do livro" id="modalCapaPreview" class="capa-preview">
@@ -107,16 +102,16 @@
             </div>
             
             <div class="modal-botoes">
-                <button class="btn-compartilhar btn-whatsapp" onclick="compartilharWhatsApp()" aria-label="Compartilhar no WhatsApp">
+                <button class="btn-compartilhar btn-whatsapp" onclick="compartilharWhatsApp()">
                     📱 WhatsApp
                 </button>
-                <button class="btn-compartilhar btn-copiar" onclick="copiarLink()" aria-label="Copiar link do livro">
+                <button class="btn-compartilhar btn-copiar" onclick="copiarLink()">
                     📋 Copiar Link
                 </button>
-                <button class="btn-compartilhar btn-email" onclick="compartilharEmail()" aria-label="Compartilhar por email">
+                <button class="btn-compartilhar btn-email" onclick="compartilharEmail()">
                     📧 E-mail
                 </button>
-                <button class="btn-compartilhar btn-fechar" onclick="fecharModal()" aria-label="Fechar modal">
+                <button class="btn-compartilhar btn-fechar" onclick="fecharModal()">
                     ❌ Fechar
                 </button>
             </div>
@@ -130,4 +125,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
