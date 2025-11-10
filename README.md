@@ -21,7 +21,7 @@ Acesse um dos sites abaixo para encontrar obras sem direitos autorais:
 | [**Standard Ebooks**](https://standardebooks.org/ebooks) | Literatura Mundial (Inglês) |
 | [**Project Gutenberg**](https://www.gutenberg.org/browse/languages/pt) | Literatura Brasileira e Portuguesa |
 
-## 2. Verifique se o Livro Já Existe
+## 2. Verifique se o Livro Já Existe no Acervo Virtual
 
 Antes de enviar, consulte o acervo para evitar duplicatas:
 👉 [**Acervo Virtual da Biblioteca**](https://bibliotecacidrosado.github.io/acervovirtual/)
