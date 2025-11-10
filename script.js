@@ -1,22 +1,15 @@
-// Variáveis globais com otimizações de performance
+// Variáveis globais
 let todosLivros = [];
 let livrosFiltrados = [];
 let categoriasUnicas = new Set();
 let paginaAtual = 1;
 const livrosPorPagina = 10;
 let livroParaCompartilhar = null;
-
-// OTIMIZAÇÕES DE PERFORMANCE
 let timeoutBusca = null;
-const delayDebounce = 150; // Otimizado de 300ms para 150ms
-
-// Batch processing para grandes datasets
-const BATCH_SIZE = 20;
-let observerIntersection = null;
+const delayDebounce = 300; // 300ms de delay
 
 // Carregar dados quando a página for carregada
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Iniciando biblioteca com otimizações de performance...');
     carregarLivrosDaPlanilha();
 });
 
@@ -30,20 +23,19 @@ async function carregarLivrosDaPlanilha() {
         const response = await fetch(url + '?t=' + new Date().getTime());
         
         if (!response.ok) {
-            throw new Error(`Erro HTTP: ${response.status} - ${response.statusText}`);
+            throw new Error('Erro ao carregar dados do arquivo JSON');
         }
         
         const livros = await response.json();
         processarLivros(livros);
-        console.log('✅ Dados carregados com sucesso');
         
     } catch (error) {
-        console.error('❌ Erro detalhado ao carregar dados:', error);
+        console.error('Erro detalhado:', error);
         mostrarErro(error);
         
         // Tentar carregar dados de fallback se disponível
         setTimeout(() => {
-            console.log('🔄 Tentando carregar dados de fallback...');
+            console.log('Tentando carregar dados de fallback...');
             carregarDadosFallback();
         }, 2000);
     }
@@ -57,40 +49,24 @@ async function carregarDadosFallback() {
         if (response.ok) {
             const livros = await response.json();
             processarLivros(livros);
-            console.log('✅ Dados fallback carregados com sucesso');
         }
     } catch (error) {
-        console.error('❌ Também falhou ao carregar fallback:', error);
-        // Manter interface responsiva mesmo com erro
-        document.getElementById('livros-container').innerHTML = `
-            <div class="sem-resultados">
-                <h3>⚠️ Problema de conectividade</h3>
-                <p>Não foi possível carregar os dados da biblioteca.</p>
-                <button onclick="carregarLivrosDaPlanilha()" style="margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--cor-primaria); color: white; border: none; border-radius: 4px; cursor: pointer;">🔄 Tentar Novamente</button>
-            </div>
-        `;
+        console.error('Também falhou ao carregar fallback:', error);
     }
 }
                        
-// Processar livros recebidos com validação defensiva
+// Processar livros recebidos
 function processarLivros(livros) {
-    console.log('📚 Processando livros:', livros.length);
+    console.log('Livros recebidos:', livros);
     
-    // VALIDAÇÃO DEFENSIVA - Correção do erro livro.titulo.toLowerCase
     if (!Array.isArray(livros)) {
-        throw new Error('Dados não são um array válido');
+        throw new Error('Dados não são um array');
     }
     
-    // Adicionar índice baseado na ordem de entrada (últimos adicionados ficam no final do array)
+    // Adicionar um índice baseado na ordem de entrada (últimos adicionados ficam no final do array)
     todosLivros = livros.map((livro, index) => {
-        // VALIDAÇÃO DEFENSIVA: Verificar se as propriedades existem
-        const titulo = (livro && typeof livro.titulo === 'string') ? livro.titulo : 'Título não informado';
-        const autor = (livro && typeof livro.autor === 'string') ? livro.autor : 'Autor não informado';
-        
         return {
             ...livro,
-            titulo: titulo,
-            autor: autor,
             indice_entrada: index // Quanto maior o índice, mais recente
         };
     });
@@ -101,10 +77,10 @@ function processarLivros(livros) {
     // Definir a opção selecionada no dropdown como "Mais Recentes"
     document.getElementById('ordenacao').value = 'recentes';
     
-    // Coletar categorias únicas com validação
+    // Coletar categorias únicas
     categoriasUnicas.clear();
     livros.forEach(livro => {
-        if (livro && livro.categoria && typeof livro.categoria === 'string') {
+        if (livro.categoria) {
             categoriasUnicas.add(livro.categoria);
         }
     });
@@ -115,27 +91,22 @@ function processarLivros(livros) {
     // Preencher dropdown de categorias
     preencherDropdownCategorias();
     
-    // Exibir livros com otimização
+    // Exibir livros
     exibirLivros();
     
     // Verificar parâmetros na URL após carregar os livros
     verificarParametrosUrl();
-    
-    // Inicializar virtual scrolling para grandes datasets
-    if (todosLivros.length > 100) {
-        inicializarVirtualScrolling();
-    }
 }
 
-// Mostrar erro com interface melhorada
+// Mostrar erro
 function mostrarErro(error) {
-    console.error('❌ Erro:', error);
+    console.error('Erro:', error);
     document.getElementById('livros-container').innerHTML = `
         <div class="sem-resultados">
-            <h3>⚠️ Erro ao carregar os dados</h3>
+            <h3>Erro ao carregar os dados</h3>
             <p>${error.message || error}</p>
-            <p>Verifique se a planilha está pública e acessível</p>
-            <button onclick="carregarLivrosDaPlanilha()" style="margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--cor-primaria); color: white; border: none; border-radius: 4px; cursor: pointer;">🔄 Tentar Novamente</button>
+            <p>Verifique se a planilha está pública</p>
+            <button onclick="carregarLivrosDaPlanilha()" style="margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--cor-primaria); color: white; border: none; border-radius: 4px; cursor: pointer;">Tentar Novamente</button>
         </div>
     `;
 }
@@ -156,7 +127,7 @@ function preencherDropdownCategorias() {
     });
 }
 
-// Exibir livros na tela com paginação e BATCH PROCESSING
+// Exibir livros na tela com paginação
 function exibirLivros() {
     const container = document.getElementById('livros-container');
     const controlesPaginacao = document.getElementById('controles-paginacao');
@@ -177,63 +148,34 @@ function exibirLivros() {
     const indiceFim = indiceInicio + livrosPorPagina;
     const livrosPagina = livrosFiltrados.slice(indiceInicio, indiceFim);
     
-    // BATCH PROCESSING: Usar DocumentFragment para melhor performance
     container.innerHTML = '';
-    const fragment = document.createDocumentFragment();
     
-    // Processar livros em batches para evitar travamentos
-    for (let i = 0; i < livrosPagina.length; i += BATCH_SIZE) {
-        const batch = livrosPagina.slice(i, i + BATCH_SIZE);
+    livrosPagina.forEach((livro, index) => {
+        const card = document.createElement('div');
+        card.className = 'card-livro';
+        card.setAttribute('data-livro', livro.titulo.toLowerCase().replace(/\s+/g, '-'));
         
-        batch.forEach((livro, index) => {
-            const card = criarCardLivro(livro, indiceInicio + i + index);
-            fragment.appendChild(card);
-        });
-    }
-    
-    container.appendChild(fragment);
+        // VERIFICAR SE É UM LIVRO RECENTE (últimos 20 adicionados)
+        const isRecent = livro.indice_entrada >= (todosLivros.length - 20);
+        
+        card.innerHTML = `
+            <div class="capa-container ${isRecent ? 'livro-recente' : ''}">
+                <img src="${livro.capa}" alt="Capa do livro ${livro.titulo}" class="card-capa"
+                     onerror="this.src='https://via.placeholder.com/200x300?text=Imagem+Não+Encontrada'">
+                <button class="icone-compartilhar" onclick="compartilharLivro('${livro.titulo.replace(/'/g, "\\'")}', '${livro.autor.replace(/'/g, "\\'")}', '${livro.link}', '${livro.capa}')">↗</button>
+            </div>
+            <div class="card-corpo">
+                <h3 class="card-titulo">${livro.titulo}</h3>
+                <p class="card-autor">${livro.autor}</p>
+                ${livro.categoria ? `<span class="card-categoria">${livro.categoria}</span>` : ''}
+                <a href="${livro.link}" target="_blank" class="card-botao">📖 Ler Livro</a>
+            </div>
+        `;
+        container.appendChild(card);
+    });
     
     // Atualizar controles de paginação
     atualizarControlesPaginacao();
-    
-    // Inicializar lazy loading para as imagens
-    inicializarLazyLoading();
-}
-
-// Criar card do livro com validação defensiva
-function criarCardLivro(livro, indiceReal) {
-    const card = document.createElement('div');
-    card.className = 'card-livro';
-    
-    // VALIDAÇÃO DEFENSIVA: Verificar propriedades antes de usar
-    const titulo = (livro.titulo && typeof livro.titulo === 'string') ? livro.titulo : 'Título não informado';
-    const autor = (livro.autor && typeof livro.autor === 'string') ? livro.autor : 'Autor não informado';
-    const link = (livro.link && typeof livro.link === 'string') ? livro.link : '#';
-    const capa = (livro.capa && typeof livro.capa === 'string') ? livro.capa : 'https://via.placeholder.com/200x300?text=Imagem+Não+Encontrada';
-    const categoria = (livro.categoria && typeof livro.categoria === 'string') ? livro.categoria : null;
-    
-    // Criar ID único para o card
-    const cardId = titulo.toLowerCase().replace(/[^a-z0-9]/g, '-').substring(0, 50);
-    card.setAttribute('data-livro', cardId);
-    
-    // VERIFICAR SE É UM LIVRO RECENTE (últimos 20 adicionados)
-    const isRecent = livro.indice_entrada >= (todosLivros.length - 20);
-    
-    card.innerHTML = `
-        <div class="capa-container ${isRecent ? 'livro-recente' : ''}">
-            <img src="${capa}" alt="Capa do livro ${titulo}" class="card-capa"
-                 onerror="this.src='https://via.placeholder.com/200x300?text=Imagem+Não+Encontrada'">
-            <button class="icone-compartilhar" onclick="compartilharLivro('${titulo.replace(/'/g, "\\'")}', '${autor.replace(/'/g, "\\'")}', '${link}', '${capa}')">↗</button>
-        </div>
-        <div class="card-corpo">
-            <h3 class="card-titulo">${titulo}</h3>
-            <p class="card-autor">${autor}</p>
-            ${categoria ? `<span class="card-categoria">${categoria}</span>` : ''}
-            <a href="${link}" target="_blank" class="card-botao">📖 Ler Livro</a>
-        </div>
-    `;
-    
-    return card;
 }
 
 // Atualizar controles de paginação
@@ -413,17 +355,16 @@ function aleatorizarArray(array) {
     return array;
 }
 
-// Função de filtragem com DEBOUNCE OTIMIZADO (150ms)
 function filtrarLivros() {
     // Limpar o timeout anterior se existir
     if (timeoutBusca) {
         clearTimeout(timeoutBusca);
     }
     
-    // Mostrar loading durante o debounce
+    // Mostrar loading durante o debounce (opcional)
     mostrarLoadingBusca();
     
-    // Configurar novo timeout com delay otimizado
+    // Configurar novo timeout
     timeoutBusca = setTimeout(() => {
         executarFiltragem();
     }, delayDebounce);
@@ -440,11 +381,11 @@ function executarFiltragem() {
     
     livrosFiltrados = todosLivros.filter(livro => {
         const correspondeBusca = !termoBusca || 
-            (livro.titulo && livro.titulo.toLowerCase().includes(termoBusca)) || 
-            (livro.autor && livro.autor.toLowerCase().includes(termoBusca));
+            livro.titulo.toLowerCase().includes(termoBusca) || 
+            livro.autor.toLowerCase().includes(termoBusca);
         
         const correspondeCategoria = !categoriaSelecionada || 
-            (livro.categoria && livro.categoria === categoriaSelecionada);
+            livro.categoria === categoriaSelecionada;
         
         return correspondeBusca && correspondeCategoria;
     });
@@ -455,7 +396,7 @@ function executarFiltragem() {
     // Atualizar estatísticas
     atualizarEstatisticas();
     
-    // Exibir livros filtrados com otimização
+    // Exibir livros filtrados
     exibirLivros();
     
     // Esconder loading
@@ -488,7 +429,7 @@ function verificarParametrosUrl() {
     if (livroParam) {
         // Buscar livro pelo título
         const livroEncontrado = todosLivros.find(livro => 
-            livro.titulo.toLowerCase().replace(/[^a-z0-9]/g, '-') === livroParam
+            livro.titulo.toLowerCase().replace(/\s+/g, '-') === livroParam
         );
         
         if (livroEncontrado) {
@@ -617,21 +558,12 @@ function esconderLoadingBusca() {
     buscaInput.classList.remove('buscando');
 }
 
-// =============================================
-// OTIMIZAÇÕES DE PERFORMANCE AVANÇADAS
-// =============================================
-
-// Lazy Loading para imagens com IntersectionObserver
-function inicializarLazyLoading() {
+// Função para observar imagens (lazy loading)
+function observarImagens() {
     const imagens = document.querySelectorAll('.card-capa');
     
     if ('IntersectionObserver' in window) {
-        // Limpar observer anterior se existir
-        if (observerIntersection) {
-            observerIntersection.disconnect();
-        }
-        
-        observerIntersection = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const img = entry.target;
@@ -640,81 +572,18 @@ function inicializarLazyLoading() {
                         img.src = src;
                         img.removeAttribute('data-src');
                     }
-                    observerIntersection.unobserve(img);
+                    observer.unobserve(img);
                 }
             });
-        }, { 
-            rootMargin: '50px 0px',
-            threshold: 0.1 
-        });
+        }, { rootMargin: '50px 0px' });
         
-        imagens.forEach(img => {
-            observerIntersection.observe(img);
-        });
+        imagens.forEach(img => observer.observe(img));
     }
 }
-
-// Virtual Scrolling para grandes datasets
-function inicializarVirtualScrolling() {
-    const container = document.getElementById('livros-container');
-    
-    if ('IntersectionObserver' in window) {
-        const virtualObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Carregar mais conteúdo se necessário
-                    console.log('📱 Virtual scrolling ativado');
-                }
-            });
-        }, {
-            rootMargin: '100px 0px'
-        });
-        
-        // Observar o container
-        virtualObserver.observe(container);
-    }
-}
-
-// Performance monitoring
-function monitorarPerformance() {
-    if ('performance' in window) {
-        const timing = performance.timing;
-        const loadTime = timing.loadEventEnd - timing.navigationStart;
-        console.log(`⚡ Tempo de carregamento: ${loadTime}ms`);
-        
-        if (loadTime > 3000) {
-            console.warn('🐌 Carregamento lento detectado:', loadTime + 'ms');
-        }
-    }
-}
-
-// Chamar monitoring após carregamento
-window.addEventListener('load', monitorarPerformance);
-
-// Limpeza de memória ao sair da página
-window.addEventListener('beforeunload', function() {
-    if (observerIntersection) {
-        observerIntersection.disconnect();
-    }
-    if (timeoutBusca) {
-        clearTimeout(timeoutBusca);
-    }
-    console.log('🧹 Memória limpa ao sair da página');
-});
-
 
 // =============================================
-// CORREÇÕES PARA COMPATIBILIDADE COM O HTML
+// CORREÇÕES PARA EXIBIÇÃO DAS CAPAS
 // =============================================
-
-// Inicializar event listeners para os controles corrigidos
-function inicializarEventListeners() {
-    // Busca com debounce já está funcionando via oninput
-    // Filtro de categoria já está funcionando via onchange
-    // Ordenação já está funcionando via onchange
-    
-    console.log('✅ Event listeners inicializados');
-}
 
 // Função para garantir que as capas sejam exibidas corretamente
 function garantirExibicaoCapas() {
@@ -734,17 +603,6 @@ function garantirExibicaoCapas() {
     });
 }
 
-// Modificar a função exibirLivros para garantir carregamento das capas
-function exibirLivrosComCapas() {
-    exibirLivros(); // Chama a função original
-    
-    // Garantir que as capas sejam exibidas após um pequeno delay
-    setTimeout(() => {
-        garantirExibicaoCapas();
-        inicializarLazyLoading();
-    }, 100);
-}
-
 // Substituir a função original por uma versão melhorada
 const originalExibirLivros = exibirLivros;
 exibirLivros = function() {
@@ -756,7 +614,6 @@ exibirLivros = function() {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Iniciando biblioteca com exibição otimizada de capas...');
     carregarLivrosDaPlanilha();
-    inicializarEventListeners();
     
     // Configurar observer para verificar capas continuamente
     const observer = new MutationObserver(() => {
@@ -769,26 +626,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Função auxiliar para debug de imagens
-function debugImagens() {
-    const imagens = document.querySelectorAll('.card-capa');
-    console.log(`🔍 Debug: ${imagens.length} imagens encontradas`);
-    
-    imagens.forEach((img, index) => {
-        console.log(`Imagem ${index + 1}:`, {
-            src: img.src,
-            complete: img.complete,
-            naturalWidth: img.naturalWidth,
-            naturalHeight: img.naturalHeight,
-            alt: img.alt
-        });
-    });
-}
-
-// Adicionar ao monitor de performance
+// Garantir exibição das capas também quando a página carregar completamente
 window.addEventListener('load', function() {
-    setTimeout(() => {
-        garantirExibicaoCapas();
-        debugImagens(); // Remover esta linha em produção
-    }, 2000);
+    setTimeout(garantirExibicaoCapas, 1000);
 });
