@@ -816,7 +816,7 @@
     "autor": "Dante Alighieri",
     "categoria": "Humor",
     "link": "https://drive.google.com/open?id=1Wc7bnWQwRaZRWZRU3ypcA9gO5FRtGvm0",
-    "capa": "https://drive.google.com/thumbnail?id=1M9RQ9qkUHXA46QChPpxW1YhfqBJb17Te&sz=w400"
+    "capa": "https://drive.google.com/thumbnail?id=1yug1srFhEPVNJ15QxoSV-vaoOPqOUA-q&sz=w400"
   },
   {
     "titulo": "Sonho de Uma Noite de Verão ",
@@ -887,5 +887,12 @@
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1mPVCbwO7LTyWuuDvgyNBfIuxoROOyrVm",
     "capa": "https://drive.google.com/thumbnail?id=1yka8XSbpQyoWswfLCUqs-PPBlj1jZ-6R&sz=w400"
+  },
+  {
+    "titulo": "Os Sonhos d'Ouro ",
+    "autor": "José de Alencar ",
+    "categoria": "Literatura",
+    "link": "https://drive.google.com/open?id=1mJKTZPwT8nh6Uv56fidIIIrLl74pEN95",
+    "capa": "https://drive.google.com/thumbnail?id=1a2kjBoiJLJpMXr6SyzuzPC9tHxDTX7oo&sz=w400"
   }
 ]
