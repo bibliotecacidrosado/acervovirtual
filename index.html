@@ -8,27 +8,38 @@
     
     <!-- Meta Tags Dinâmicas para Compartilhamento -->
     <meta property="og:title" content="Biblioteca Digital Cid Rosado">
-    <meta property="og:description" content="Explore nossa coleção de livros digitais organizados por categorias">
+    <meta property="og:description" content="Obras em domínio público e publicações de acesso gratuito">
+    <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/2232/2232688.png">
+    <meta property="og:url" content="https://bibliotecacidrosado.github.io">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9IiNGRjZEMDAiLz48dGV4dCB4PSI2MDAiIHk9IjMyMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5CaWJsaW90ZWNhIEVsw61zdGljYTwvdGV4dD48L3N2Zz4=">
     
-    <link rel="stylesheet" href="styles-capas-completas.css">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Biblioteca Digital Cid Rosado">
+    <meta name="twitter:description" content="Obras em domínio público">
+    <meta name="twitter:image" content="https://cdn-icons-png.flaticon.com/512/2232/2232688.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2232/2232688.png">
+    <link rel="icon" sizes="192x192" href="https://cdn-icons-png.flaticon.com/512/2232/2232688.png">
+    <meta name="msapplication-TileImage" content="https://cdn-icons-png.flaticon.com/512/2232/2232688.png">
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="header">
-        <h1>📚 Biblioteca Digital Cid Rosado</h1>
-        <p>Explore nossa coleção de livros digitais organizados por categorias</p>
-    </header>
-
+    <div class="header">
+        <h1>Biblioteca Digital Cid Rosado</h1>
+        <p>Obras em domínio público e publicações de acesso gratuito disponíveis para consulta e download legal.</p>
+    </div>
+    
     <div class="container">
         <div class="info-box">
-            <h3>🎯 Sistema Otimizado de Busca e Navegação</h3>
-            <p>Use os filtros abaixo para encontrar rapidamente os livros desejados. O sistema é otimizado para performance e experiência do usuário.</p>
+            <h3>🚀 Biblioteca no GitHub Pages</h3>
+            <p>Hospedagem estável + Dados em tempo real do Google Sheets</p>
         </div>
-
-        <!-- CORREÇÃO: IDs compatíveis com o JavaScript -->
+        
         <div class="controles">
-            <input type="text" id="busca" placeholder="🔍 Buscar por título ou autor..." oninput="filtrarLivros()">
+            <input type="text" id="busca" placeholder="Buscar por título ou autor..." oninput="filtrarLivros()">
             <select id="filtro-categoria" onchange="filtrarLivros()">
                 <option value="">Todas as categorias</option>
             </select>
@@ -41,35 +52,29 @@
                 <option value="categoria">🏷️ Categoria</option>
             </select>
         </div>
-
+        
         <div class="estatisticas">
             <div class="estatistica-item">
                 <div class="estatistica-valor" id="total-livros">0</div>
-                <div class="estatistica-label">Total de Livros</div>
+                <div class="estatistica-label">Livros no total</div>
             </div>
             <div class="estatistica-item">
                 <div class="estatistica-valor" id="livros-visiveis">0</div>
-                <div class="estatistica-label">Livros Encontrados</div>
+                <div class="estatistica-label">Livros encontrados</div>
             </div>
             <div class="estatistica-item">
                 <div class="estatistica-valor" id="total-categorias">0</div>
                 <div class="estatistica-label">Categorias</div>
             </div>
         </div>
-
-        <div id="loading" class="loading-busca" style="display: none;">
-            <div class="loading-spinner pequeno"></div>
-            <p>Carregando livros...</p>
-        </div>
-
-        <div id="livros-container" class="grid-livros">
+        
+        <div class="grid-livros" id="livros-container">
             <div class="loading">
                 <div class="loading-spinner"></div>
                 <p>Carregando livros...</p>
             </div>
         </div>
-
-        <!-- CORREÇÃO: IDs compatíveis e estrutura correta -->
+        
         <div class="controles-paginacao" id="controles-paginacao">
             <button class="btn-paginacao" id="pagina-anterior" onclick="paginaAnterior()">Anterior</button>
             <div class="paginacao-numeros" id="paginacao-numeros"></div>
@@ -81,8 +86,8 @@
             </div>
         </div>
     </div>
-
-    <!-- CORREÇÃO: Modal com IDs compatíveis -->
+    
+    <!-- Modal de Compartilhamento Atualizado -->
     <div class="modal-compartilhar" id="modalCompartilhar">
         <div class="modal-content">
             <h3>📤 Compartilhar Livro</h3>
@@ -112,11 +117,11 @@
             </div>
         </div>
     </div>
+    
+    <div class="footer">
+        <p>Biblioteca Virtual &copy; 2025 - GitHub Pages + Google Sheets</p>
+    </div>
 
-    <footer class="footer">
-        <p>© 2024 Biblioteca Digital Cid Rosado - Sistema otimizado para performance e experiência do usuário</p>
-    </footer>
-
-    <script src="script-final-corrigido.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
