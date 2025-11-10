@@ -26,30 +26,34 @@
             <p>Use os filtros abaixo para encontrar rapidamente os livros desejados. O sistema é otimizado para performance e experiência do usuário.</p>
         </div>
 
+        <!-- CORREÇÃO: IDs compatíveis com o JavaScript -->
         <div class="controles">
-            <input type="text" id="searchInput" placeholder="🔍 Buscar por título ou autor..." class="buscando">
-            <select id="categoriaFilter">
+            <input type="text" id="busca" placeholder="🔍 Buscar por título ou autor..." oninput="filtrarLivros()">
+            <select id="filtro-categoria" onchange="filtrarLivros()">
                 <option value="">Todas as categorias</option>
             </select>
-            <select id="sortBy">
-                <option value="titulo">Ordenar por título</option>
-                <option value="autor">Ordenar por autor</option>
-                <option value="categoria">Ordenar por categoria</option>
+            <select id="ordenacao" onchange="filtrarLivros()">
+                <option value="recentes">🆕 Mais Recentes</option>
+                <option value="aleatoria">🎲 Ordem Aleatória</option>
+                <option value="titulo-az">📖 Título (A-Z)</option>
+                <option value="titulo-za">📖 Título (Z-A)</option>
+                <option value="autor-az">✍️ Autor (A-Z)</option>
+                <option value="categoria">🏷️ Categoria</option>
             </select>
         </div>
 
         <div class="estatisticas">
             <div class="estatistica-item">
-                <div class="estatistica-valor" id="totalLivros">0</div>
+                <div class="estatistica-valor" id="total-livros">0</div>
                 <div class="estatistica-label">Total de Livros</div>
             </div>
             <div class="estatistica-item">
-                <div class="estatistica-valor" id="categoriasUnicas">0</div>
-                <div class="estatistica-label">Categorias</div>
+                <div class="estatistica-valor" id="livros-visiveis">0</div>
+                <div class="estatistica-label">Livros Encontrados</div>
             </div>
             <div class="estatistica-item">
-                <div class="estatistica-valor" id="autoresUnicos">0</div>
-                <div class="estatistica-label">Autores</div>
+                <div class="estatistica-valor" id="total-categorias">0</div>
+                <div class="estatistica-label">Categorias</div>
             </div>
         </div>
 
@@ -58,45 +62,52 @@
             <p>Carregando livros...</p>
         </div>
 
-        <div id="livrosContainer" class="grid-livros"></div>
+        <div id="livros-container" class="grid-livros">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <p>Carregando livros...</p>
+            </div>
+        </div>
 
-        <div id="paginationControls" class="controles-paginacao">
-            <button id="prevPage" class="btn-paginacao">← Anterior</button>
-            <div id="pageNumbers" class="paginacao-numeros"></div>
-            <button id="nextPage" class="btn-paginacao">Próxima →</button>
+        <!-- CORREÇÃO: IDs compatíveis e estrutura correta -->
+        <div class="controles-paginacao" id="controles-paginacao">
+            <button class="btn-paginacao" id="pagina-anterior" onclick="paginaAnterior()">Anterior</button>
+            <div class="paginacao-numeros" id="paginacao-numeros"></div>
+            <button class="btn-paginacao" id="proxima-pagina" onclick="proximaPagina()">Próxima</button>
             <div class="paginacao-seletor">
-                <span>Ir para página:</span>
-                <input type="number" id="pageInput" min="1" value="1">
-                <button id="goToPage">Ir</button>
+                <span>Ir para:</span>
+                <input type="number" id="pular-para-pagina" min="1" value="1">
+                <button onclick="pularParaPagina()">Ir</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal de Compartilhamento -->
-    <div id="shareModal" class="modal-compartilhar">
+    <!-- CORREÇÃO: Modal com IDs compatíveis -->
+    <div class="modal-compartilhar" id="modalCompartilhar">
         <div class="modal-content">
             <h3>📤 Compartilhar Livro</h3>
+            
             <div class="preview-compartilhamento">
-                <img id="shareCover" src="" alt="Capa do livro" class="capa-preview">
+                <img src="" alt="Capa do livro" id="modalCapaPreview" class="capa-preview">
                 <div class="info-preview">
-                    <h4 id="shareTitle">Título do Livro</h4>
-                    <p id="shareAuthor">Autor</p>
-                    <p id="shareCategory">Categoria</p>
-                    <small id="shareAvailable">✓ Disponível na Biblioteca Digital</small>
+                    <h4 id="modalTituloLivro"></h4>
+                    <p id="modalAutorLivro"></p>
+                    <small>✅ A capa aparecerá no compartilhamento</small>
                 </div>
             </div>
+            
             <div class="modal-botoes">
-                <button id="shareWhatsApp" class="btn-compartilhar btn-whatsapp">
+                <button class="btn-compartilhar btn-whatsapp" onclick="compartilharWhatsApp()">
                     📱 WhatsApp
                 </button>
-                <button id="shareCopy" class="btn-compartilhar btn-copiar">
-                    🔗 Copiar Link
+                <button class="btn-compartilhar btn-copiar" onclick="copiarLink()">
+                    📋 Copiar Link
                 </button>
-                <button id="shareEmail" class="btn-compartilhar btn-email">
-                    ✉️ Email
+                <button class="btn-compartilhar btn-email" onclick="compartilharEmail()">
+                    📧 E-mail
                 </button>
-                <button id="closeShare" class="btn-compartilhar btn-fechar">
-                    ✕ Fechar
+                <button class="btn-compartilhar btn-fechar" onclick="fecharModal()">
+                    ❌ Fechar
                 </button>
             </div>
         </div>
