@@ -701,3 +701,94 @@ window.addEventListener('beforeunload', function() {
     }
     console.log('🧹 Memória limpa ao sair da página');
 });
+
+
+// =============================================
+// CORREÇÕES PARA COMPATIBILIDADE COM O HTML
+// =============================================
+
+// Inicializar event listeners para os controles corrigidos
+function inicializarEventListeners() {
+    // Busca com debounce já está funcionando via oninput
+    // Filtro de categoria já está funcionando via onchange
+    // Ordenação já está funcionando via onchange
+    
+    console.log('✅ Event listeners inicializados');
+}
+
+// Função para garantir que as capas sejam exibidas corretamente
+function garantirExibicaoCapas() {
+    const imagens = document.querySelectorAll('.card-capa');
+    imagens.forEach(img => {
+        // Forçar reload se a imagem não carregou
+        if (img.complete && img.naturalHeight === 0) {
+            console.log('🔄 Recarregando imagem que falhou:', img.src);
+            img.src = img.src + '&t=' + new Date().getTime();
+        }
+        
+        // Adicionar fallback visual
+        img.onerror = function() {
+            this.src = 'https://via.placeholder.com/200x300/FF6D00/white?text=Capa+Não+Disponível';
+            this.alt = 'Capa não disponível';
+        };
+    });
+}
+
+// Modificar a função exibirLivros para garantir carregamento das capas
+function exibirLivrosComCapas() {
+    exibirLivros(); // Chama a função original
+    
+    // Garantir que as capas sejam exibidas após um pequeno delay
+    setTimeout(() => {
+        garantirExibicaoCapas();
+        inicializarLazyLoading();
+    }, 100);
+}
+
+// Substituir a função original por uma versão melhorada
+const originalExibirLivros = exibirLivros;
+exibirLivros = function() {
+    originalExibirLivros();
+    setTimeout(garantirExibicaoCapas, 50);
+};
+
+// Inicialização melhorada quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Iniciando biblioteca com exibição otimizada de capas...');
+    carregarLivrosDaPlanilha();
+    inicializarEventListeners();
+    
+    // Configurar observer para verificar capas continuamente
+    const observer = new MutationObserver(() => {
+        garantirExibicaoCapas();
+    });
+    
+    observer.observe(document.getElementById('livros-container'), {
+        childList: true,
+        subtree: true
+    });
+});
+
+// Função auxiliar para debug de imagens
+function debugImagens() {
+    const imagens = document.querySelectorAll('.card-capa');
+    console.log(`🔍 Debug: ${imagens.length} imagens encontradas`);
+    
+    imagens.forEach((img, index) => {
+        console.log(`Imagem ${index + 1}:`, {
+            src: img.src,
+            complete: img.complete,
+            naturalWidth: img.naturalWidth,
+            naturalHeight: img.naturalHeight,
+            alt: img.alt
+        });
+    });
+}
+
+// Adicionar ao monitor de performance
+window.addEventListener('load', function() {
+    setTimeout(() => {
+        garantirExibicaoCapas();
+        debugImagens(); // Remover esta linha em produção
+    }, 2000);
+});
