@@ -44,15 +44,10 @@
         </div>
         
         <div class="controles">
-            <label for="busca" class="sr-only">Buscar por título ou autor</label>
             <input type="text" id="busca" placeholder="Buscar por título ou autor..." oninput="filtrarLivros()" aria-label="Campo de busca">
-            
-            <label for="filtro-categoria" class="sr-only">Filtrar por categoria</label>
             <select id="filtro-categoria" onchange="filtrarLivros()" aria-label="Filtro de categoria">
                 <option value="">Todas as categorias</option>
             </select>
-            
-            <label for="ordenacao" class="sr-only">Ordenar resultados</label>
             <select id="ordenacao" onchange="filtrarLivros()" aria-label="Ordenação">
                 <option value="recentes">🆕 Mais Recentes</option>
                 <option value="aleatoria">🎲 Ordem Aleatória</option>
@@ -135,3 +130,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
