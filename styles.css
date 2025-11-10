@@ -151,27 +151,106 @@ body {
 }
 
 .card-livro:hover {
+    transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
+
+/* ============================================= */
+/* MELHORIAS PARA EXIBIÇÃO DE CAPAS */
+/* ============================================= */
 
 .capa-container {
     position: relative;
     width: 100%;
     height: 220px;
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .card-capa {
     width: 100%;
-    height: 220px;
-    object-fit: contain;
-    background-color: #f9f9f9;
-    padding: 1rem;
-    filter: saturate(1.1) contrast(1.05);
-    transition: filter 0.3s ease;
+    height: 100%;
+    object-fit: contain; /* Mantém a proporção da imagem */
+    background-color: transparent;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+    max-width: 100%;
+    max-height: 100%;
 }
 
-.card-capa:hover {
-    filter: saturate(1.2) contrast(1.1);
+/* Efeito hover suave para as capas */
+.card-livro:hover .card-capa {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* Loading state para imagens */
+.card-capa[src*="placeholder"] {
+    background-color: #f8f9fa;
+    border: 2px dashed #dee2e6;
+}
+
+/* Estilo para capas que falharam no carregamento */
+.card-capa:error {
+    background-color: #fff3e0;
+    border: 2px solid #ff6d00;
+}
+
+/* Container de fallback para imagens */
+.capa-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+    color: white;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Animações para carregamento de imagens */
+@keyframes fadeInCapa {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.card-capa {
+    animation: fadeInCapa 0.5s ease-in-out;
+}
+
+/* Responsividade melhorada para capas */
+@media (max-width: 768px) {
+    .capa-container {
+        height: 200px;
+    }
+    
+    .card-capa {
+        padding: 0.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .capa-container {
+        height: 180px;
+    }
+}
+
+/* Indicador visual de capa carregando */
+.capa-carregando {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
 
 .card-corpo {
