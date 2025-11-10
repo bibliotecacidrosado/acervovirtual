@@ -163,9 +163,9 @@ body {
 .card-capa {
     width: 100%;
     height: 220px;
-    object-fit: cover;
-    background-color: white;
-    padding: 0.5rem;
+    object-fit: contain;
+    background-color: #f9f9f9;
+    padding: 1rem;
     filter: saturate(1.1) contrast(1.05);
     transition: filter 0.3s ease;
 }
