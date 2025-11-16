@@ -1001,13 +1001,6 @@
     "capa": "https://drive.google.com/thumbnail?id=1k-D2Si1RsQNptA0QvIyVdePnMejyGJYU&sz=w400"
   },
   {
-    "titulo": "Sertão ",
-    "autor": "Coelho Neto",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=1ZHs7HD73koLt_HTkfbIWv5Ik0PndvW_p",
-    "capa": "https://drive.google.com/thumbnail?id=1OmEZDzXL2kemG3WsCUKiED2UmKeqSWua&sz=w400"
-  },
-  {
     "titulo": "O Mandarim",
     "autor": "Eça de Queiroz",
     "categoria": "Literatura",
@@ -1062,5 +1055,12 @@
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1-mP2Nzpiehc9wZ-goX8wd1IpLH9yw-jb",
     "capa": "https://drive.google.com/thumbnail?id=1HiWT_pEoQo6AcupNL_RcPBBKL_KhUREN&sz=w400"
+  },
+  {
+    "titulo": "O guarani",
+    "autor": " José de Alencar",
+    "categoria": "Literatura",
+    "link": "https://drive.google.com/open?id=1UeS9QnCpT8rHy7CjEINOnbFfiGKAwdqS",
+    "capa": "https://drive.google.com/thumbnail?id=1hKxx2oJmSBN3uVXR1gfNpzOflHrTGtqw&sz=w400"
   }
 ]
