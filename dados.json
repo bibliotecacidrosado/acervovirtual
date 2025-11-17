@@ -1562,7 +1562,7 @@
   },
   {
     "titulo": "A Pastorinhas de Gansos",
-    "autor": "Irmãos grimm",
+    "autor": "Irmãos Grimm",
     "categoria": "História",
     "link": "https://drive.google.com/open?id=1beSRttofzuxRAKo5gf7l03BgQvpd5S3j",
     "capa": "https://drive.google.com/thumbnail?id=16-KG_Dwn0rDIZ-d-UxP5d8gbpFUfFR4O&sz=w400"
@@ -1608,5 +1608,12 @@
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1scV8IA6iTg6RhAbxygC2-oVuQYZJt-Q8",
     "capa": "https://drive.google.com/thumbnail?id=18XxVtpptGROl5dhdL8J_G7ZUQm5G8rvI&sz=w400"
+  },
+  {
+    "titulo": "Dom Quixote de La Mancha ",
+    "autor": "Miguel de Cervantes ",
+    "categoria": "Literatura",
+    "link": "https://drive.google.com/open?id=1iye7PNwVICCnH7PvItsNAm_1sjrEZhGY",
+    "capa": "https://drive.google.com/thumbnail?id=1eaOcPBMTUKbyoI8zeW9sE-4zzVKik4ZP&sz=w400"
   }
 ]
