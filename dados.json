@@ -1577,7 +1577,7 @@
   {
     "titulo": "The Blithedale romance",
     "autor": "Nathaniel Hawthorne",
-    "categoria": "Psicologia",
+    "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=11J7es40xC7U4cgdoMbQBNIM9t-gelk_o",
     "capa": "https://drive.google.com/thumbnail?id=1ElWj7zeXaOFkbW_1zfCLpIYarUssJWra&sz=w400"
   },
@@ -1587,5 +1587,12 @@
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=160-rvC1T-Ghc2Up8qD21O6UJhNaJ1R0G",
     "capa": "https://drive.google.com/thumbnail?id=1YkGInxsnkXdH08mhwRSQ0__QES0YLdMf&sz=w400"
+  },
+  {
+    "titulo": "Coração de Cachorro",
+    "autor": "Mikhail Bulgakov",
+    "categoria": "Literatura",
+    "link": "https://drive.google.com/open?id=114jD6l_bCt3YuQHAKpYEIJtImWu1LAbt",
+    "capa": "https://drive.google.com/thumbnail?id=1KI3XKtXh9Qzyx4hMc_udLCPgR5ykelAf&sz=w400"
   }
 ]
