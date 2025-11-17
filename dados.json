@@ -1527,9 +1527,16 @@
   },
   {
     "titulo": "Aprendendo-o-alfabeto",
-    "autor": "Éder franca",
+    "autor": "Éder Franca",
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1wsVku5FJxxeh81ppwfRWQJPg1xs-CukS",
     "capa": "https://drive.google.com/thumbnail?id=1_ZzRDazgDZpWhXUHojSqmP1bLuyTTXAv&sz=w400"
+  },
+  {
+    "titulo": "Os Lusíadas",
+    "autor": "Luís de Camões",
+    "categoria": "Literatura",
+    "link": "https://drive.google.com/open?id=1FtC5sdDJIW76kthjJ2T48CHAfxDiczn6",
+    "capa": "https://drive.google.com/thumbnail?id=1b24FQrJna6Tfbi-2M0wt2dzgZzzKcSLq&sz=w400"
   }
 ]
