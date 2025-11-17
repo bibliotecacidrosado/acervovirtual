@@ -1197,13 +1197,6 @@
     "capa": "https://drive.google.com/thumbnail?id=1vNu7fr4T7FF4u3WY_7S_b2DbN8CTMavo&sz=w400"
   },
   {
-    "titulo": "Uma senhora ",
-    "autor": "Machado de Assis ",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=112iHrtnDksYbmebkaC3cwnLn-svWuO_a",
-    "capa": "https://drive.google.com/thumbnail?id=1wig-V4ww69NwBaldwXr3_lRWLhuYyeCi&sz=w400"
-  },
-  {
     "titulo": "A Abóboda ",
     "autor": "Alexandre herculano",
     "categoria": "Literatura",
@@ -1260,17 +1253,17 @@
     "capa": "https://drive.google.com/thumbnail?id=1p9mQrZd7zDRNW3cRDIj91O7zFun1hhRh&sz=w400"
   },
   {
-    "titulo": "Três tesouros perdidos",
-    "autor": "Machado de Assis ",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=1KlblIqfX-GrHKBXr2YDRxUhYPIwrTcJx",
-    "capa": "https://drive.google.com/thumbnail?id=1b9PaoKUhYEo8nU2uXTA0N1-2F6CKIsMs&sz=w400"
-  },
-  {
     "titulo": "Questão da vaidade ",
     "autor": "Machado de Assis ",
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1ai1z835ORFrcj_FtjUha6ujiWj1WJjFi",
     "capa": "https://drive.google.com/thumbnail?id=1-dPvxQSto55P1wZJqST9i3l9Zf62M1kL&sz=w400"
+  },
+  {
+    "titulo": "A Normalista",
+    "autor": "Adolfo Caminha",
+    "categoria": "Literatura",
+    "link": "https://drive.google.com/open?id=1X2vwY7xNfhBlbW3AMWDo3-PaLS0szLsb",
+    "capa": "https://drive.google.com/thumbnail?id=1m9M5WfyjaKB7JJxrlQq2KmZdd2k0x18N&sz=w400"
   }
 ]
