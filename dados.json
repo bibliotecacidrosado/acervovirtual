@@ -1762,5 +1762,19 @@
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1LC2rIAWirmdjaIDqRVver0xzLgdEGAWz",
     "capa": "https://drive.google.com/thumbnail?id=1QEvYQo9UAUQ2-7UhBPp-wIWQ1i3PWLpN&sz=w400"
+  },
+  {
+    "titulo": "Eu",
+    "autor": "Augusto dos Anjos",
+    "categoria": "Literatura",
+    "link": "https://drive.google.com/open?id=1zsYM3V6bffkEGwh4A2cq-l4KN0JqqCAT",
+    "capa": "https://drive.google.com/thumbnail?id=1WtbJ3nemXnjbASyhB6iulLFVueeOeckS&sz=w400"
+  },
+  {
+    "titulo": "O moleque",
+    "autor": "Lima Barreto",
+    "categoria": "Literatura",
+    "link": "https://drive.google.com/open?id=10adhP07_jR6rT9jA7nAEPSJV82ZjzmP4",
+    "capa": "https://drive.google.com/thumbnail?id=10UkudquxXYNOps5bGavrNlnC6Q1BC1yc&sz=w400"
   }
 ]
