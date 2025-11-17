@@ -1582,7 +1582,7 @@
     "capa": "https://drive.google.com/thumbnail?id=1ElWj7zeXaOFkbW_1zfCLpIYarUssJWra&sz=w400"
   },
   {
-    "titulo": "A capital ",
+    "titulo": "A Capital ",
     "autor": "Eça de Queiroz ",
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=160-rvC1T-Ghc2Up8qD21O6UJhNaJ1R0G",
@@ -1601,5 +1601,12 @@
     "categoria": "Educação & Pedagogia",
     "link": "https://drive.google.com/open?id=1nCx2kP9W2PxrfcFQTiPJPB0jzt5vkzHa",
     "capa": "https://drive.google.com/thumbnail?id=1mn-Gti_AyJhzmiT-BNVqlDeQprxBhf3z&sz=w400"
+  },
+  {
+    "titulo": "Auto da Feira",
+    "autor": "Gil Vicente",
+    "categoria": "Literatura",
+    "link": "https://drive.google.com/open?id=1scV8IA6iTg6RhAbxygC2-oVuQYZJt-Q8",
+    "capa": "https://drive.google.com/thumbnail?id=18XxVtpptGROl5dhdL8J_G7ZUQm5G8rvI&sz=w400"
   }
 ]
