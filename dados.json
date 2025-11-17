@@ -1344,13 +1344,6 @@
     "capa": "https://drive.google.com/thumbnail?id=19j9Jt7SGkKVmS8SMmAfUmFFoxQaLRVLW&sz=w400"
   },
   {
-    "titulo": "O Conde de Monte Cristo",
-    "autor": "Alexandre Dumas ",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=1TQSueLWnoEoiney9ZVIUqM2A5jxk2hho",
-    "capa": "https://drive.google.com/thumbnail?id=1wyG3zLwrOkaemRv1PwuGwAt5sGGXyEXy&sz=w400"
-  },
-  {
     "titulo": "A Volta ao Mundo em 80 Dias",
     "autor": "Julio Verne",
     "categoria": "Literatura",
@@ -1421,7 +1414,7 @@
     "capa": "https://drive.google.com/thumbnail?id=14tUHdr0OKykR-CmuyZF2D5C1Muc3lqel&sz=w400"
   },
   {
-    "titulo": "Eu e outras poesias",
+    "titulo": "Eu e Outras Poesias",
     "autor": "Augusto dos Anjos",
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1fBTasoYqmV7-r6aoXNo-_d4iKU4VAhN_",
