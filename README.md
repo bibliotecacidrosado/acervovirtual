@@ -20,6 +20,11 @@ Acesse um dos sites abaixo para encontrar obras sem direitos autorais:
 | [**Open Library**](https://openlibrary.org/) | Literatura Mundial (Inglês) |
 | [**Standard Ebooks**](https://standardebooks.org/ebooks) | Literatura Mundial (Inglês) |
 | [**Project Gutenberg**](https://www.gutenberg.org/browse/languages/pt) | Literatura Brasileira e Portuguesa |
+| [**Netmundi**](https://www.netmundi.org/home/classicos-da-literatura-e-da-filosofia-300-obras-para-baixar/) | Clássicos da Literatura e Filosofia |
+| [**Humanitas**](https://humanitas.ufrn.br/?page_id=428) | Biblioteca Digital do Instituto Humanitas |
+| [**USP**](https://www.livrosabertos.abcd.usp.br/portaldelivrosUSP/index) | Portal de Livros Abertos da USP |
+| [**EducaBras**](https://www.educabras.com/obras_literarias) | Obras Literárias |
+| [**Editora da UFSC**](https://editora.ufsc.br/estante-aberta/) | Obras de distribuição livre |
 
 ## 2. Verifique se o Livro Já Existe no Acervo Virtual
 
