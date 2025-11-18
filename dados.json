@@ -2555,7 +2555,7 @@
     "capa": "https://drive.google.com/thumbnail?id=1uwDCLiBgKQsYoHW2m-nk7AvnOGi224nV&sz=w400"
   },
   {
-    "titulo": "Morte em veneza ",
+    "titulo": "Morte em Veneza ",
     "autor": "Thomas Mann",
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1LFv434FXBmw-SIHrwE-dR1eB7UXk932X",
@@ -2630,5 +2630,12 @@
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1F7afOsbXx995wMnWdshhZ7tf6XfbPjOX",
     "capa": "https://drive.google.com/thumbnail?id=1kniKoDYw_lYwplzXczmxBj-vaImeuX2X&sz=w400"
+  },
+  {
+    "titulo": "Alfarrábios",
+    "autor": "José de Alencar ",
+    "categoria": "Literatura",
+    "link": "https://drive.google.com/open?id=1TfHAW6NbS0DoQaBaR4oR3iM2xiYcHmPm",
+    "capa": "https://drive.google.com/thumbnail?id=113V2_2RCuDKtvEG2dxUzFSiEWx9uUedr&sz=w400"
   }
 ]
