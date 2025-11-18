@@ -1001,13 +1001,6 @@
     "capa": "https://drive.google.com/thumbnail?id=1k-D2Si1RsQNptA0QvIyVdePnMejyGJYU&sz=w400"
   },
   {
-    "titulo": "O Mandarim",
-    "autor": "Eça de Queiroz",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=11YsRsvbFwNT4pDx8q6RayqTEmWCvI56f",
-    "capa": "https://drive.google.com/thumbnail?id=17mSlbgO9xjdtdlq7bN8Zy82cAlLCEJDG&sz=w400"
-  },
-  {
     "titulo": "Dom Casmurro",
     "autor": "Machado de Assis",
     "categoria": "Literatura",
@@ -2345,13 +2338,6 @@
     "capa": "https://drive.google.com/thumbnail?id=1yseMD4eaua4ZOyC3IvfQaaKzY9DvmNfF&sz=w400"
   },
   {
-    "titulo": "O Mandarim",
-    "autor": "Eça de Queiroz ",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=1xQOtB01-FJ2xtbYnQzr4mfT4ku3CbEG9",
-    "capa": "https://drive.google.com/thumbnail?id=1t7of6wl7B_Z2vMcJMoptylls9WxaTjg-&sz=w400"
-  },
-  {
     "titulo": "A Cidade e as Serras",
     "autor": "Eça de Queiróz",
     "categoria": "Literatura",
@@ -2658,5 +2644,12 @@
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1qUV8J-zU_tgmLEFilTcudbCSZHVviARU",
     "capa": "https://drive.google.com/thumbnail?id=1cB5TpCmHfUZRtRzFmpOf4OH5A11yJ_ze&sz=w400"
+  },
+  {
+    "titulo": " O Lobisomem ",
+    "autor": "Virgínia de Castro e Almeida",
+    "categoria": "Literatura",
+    "link": "https://drive.google.com/open?id=16pbhNEES9OGYuaOTIBcHIciw1MOW-I2g",
+    "capa": "https://drive.google.com/thumbnail?id=126NWVUtooF8jObvr1AjTFwMBSsAfD1Bb&sz=w400"
   }
 ]
