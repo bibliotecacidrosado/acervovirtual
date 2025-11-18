@@ -2457,7 +2457,7 @@
     "capa": "https://drive.google.com/thumbnail?id=1gR_YkbczMeUBZ5Qi-MwZSglVO_1SYCl0&sz=w400"
   },
   {
-    "titulo": "Da terra a lua",
+    "titulo": "Da Terra a Lua",
     "autor": "Júlio verne",
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1ysogdpiBpsvNJFwzANxIi3cEstphk_Vk",
@@ -2637,5 +2637,12 @@
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1TfHAW6NbS0DoQaBaR4oR3iM2xiYcHmPm",
     "capa": "https://drive.google.com/thumbnail?id=113V2_2RCuDKtvEG2dxUzFSiEWx9uUedr&sz=w400"
+  },
+  {
+    "titulo": "A Fada Melusin",
+    "autor": "Lenda francesa ",
+    "categoria": "Religião & Mitologia",
+    "link": "https://drive.google.com/open?id=1F-mnG-NT_-ds3iJzteApB0bv0WGeyZon",
+    "capa": "https://drive.google.com/thumbnail?id=1BNidDxSAb0064wfm-mO5AZt8Zk-gDxkS&sz=w400"
   }
 ]
