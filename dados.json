@@ -2528,7 +2528,7 @@
   },
   {
     "titulo": "Os miseráveis ",
-    "autor": "Victor hugo",
+    "autor": "Victor Hugo",
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1SBA3atNlHOzHPjgqfEuJRA0wpYnPJCFz",
     "capa": "https://drive.google.com/thumbnail?id=17ZlWNNvi2CZ5bV8is2x1yW1VfYOQGlQR&sz=w400"
@@ -2553,5 +2553,12 @@
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1nZog_CHdHzajs3ru3J_ZTw3RsfGS7w1u",
     "capa": "https://drive.google.com/thumbnail?id=1uwDCLiBgKQsYoHW2m-nk7AvnOGi224nV&sz=w400"
+  },
+  {
+    "titulo": "Morte em veneza ",
+    "autor": "Thomas Mann",
+    "categoria": "Literatura",
+    "link": "https://drive.google.com/open?id=1LFv434FXBmw-SIHrwE-dR1eB7UXk932X",
+    "capa": "https://drive.google.com/thumbnail?id=1PN-a5StvEXQp3KhMSlCoX8IJxg1H4vd-&sz=w400"
   }
 ]
