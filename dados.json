@@ -2660,13 +2660,6 @@
     "capa": "https://drive.google.com/thumbnail?id=1ESCNWapMQbOpwxh3UrbhihwkGkrlZuaK&sz=w400"
   },
   {
-    "titulo": "Toda Poesia ",
-    "autor": "Paulo Leminski",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=1q5aEJGmwViC-5b4gYxOFGVSyq8W6mO0h",
-    "capa": "https://drive.google.com/thumbnail?id=15iW47Buy7ua6MP03W5lUpu0pkeil224w&sz=w400"
-  },
-  {
     "titulo": "Toxicologia ambiental: um guia para estudantes",
     "autor": "Kelly Polido Kaneshiro Olympio, Adriana de Souza Rodrigues, Elizeu Chiodi Pereira, Heverton Vieira de Souza, Kamila de Almeida Piai ",
     "categoria": "Ciências",
@@ -2868,5 +2861,12 @@
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1CytIdRG_RwPuaMlg1z3yejc43YmyZQxi",
     "capa": "https://drive.google.com/thumbnail?id=1kqKheuYz6kqXqgyAbvQHsNxhck_UadVB&sz=w400"
+  },
+  {
+    "titulo": "O crime do padre amaro",
+    "autor": "Eça de Queirós",
+    "categoria": "Literatura",
+    "link": "https://drive.google.com/open?id=1-2GnlUUtE52F9uOnybLTfo_FG8s__C_o",
+    "capa": "https://drive.google.com/thumbnail?id=1Rd87l1OH8VbOcONJi1jU1Kr_skTs13Tu&sz=w400"
   }
 ]
