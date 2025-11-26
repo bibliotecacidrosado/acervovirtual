@@ -868,13 +868,6 @@
     "capa": "https://drive.google.com/thumbnail?id=1yka8XSbpQyoWswfLCUqs-PPBlj1jZ-6R&sz=w400"
   },
   {
-    "titulo": "Os Sonhos D'ouro",
-    "autor": "José de Alencar",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=1mJKTZPwT8nh6Uv56fidIIIrLl74pEN95",
-    "capa": "https://drive.google.com/thumbnail?id=1oB7CyUVvk5cukHd__pQc4rst47UxCB38&sz=w400"
-  },
-  {
     "titulo": "O Que É o Casamento?",
     "autor": "José de Alencar",
     "categoria": "Literatura",
@@ -2959,5 +2952,12 @@
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1wgUR0Ida6GjwNKYafyy5BdjlXTBa_DM_",
     "capa": "https://drive.google.com/thumbnail?id=1P1P3ur1uvrI-KrnOwRCSCD259ESWb1fk&sz=w400"
+  },
+  {
+    "titulo": "Julio de Mesquita Filho",
+    "autor": "José Alfredo Vidigal Pontes",
+    "categoria": "Educação & Pedagogia",
+    "link": "https://drive.google.com/open?id=1OkSNlBSzmSgUipxG8TIGGx0xHaMcv-ir",
+    "capa": "https://drive.google.com/thumbnail?id=1-wdCq7ILrSYA_3Ryp6Di4fl9kJeHk6Kt&sz=w400"
   }
 ]
