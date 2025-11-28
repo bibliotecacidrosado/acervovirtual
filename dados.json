@@ -1694,13 +1694,6 @@
     "capa": "https://drive.google.com/thumbnail?id=1EJD2obvRB2C3hU1XxjdVCWaeV983HLej&sz=w400"
   },
   {
-    "titulo": "A Hora da Estrela",
-    "autor": "Clarice Lispector",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=1LzHzkox_kD_SsA6JhSqYoZgOuIIANIhV",
-    "capa": "https://drive.google.com/thumbnail?id=1boWJUOSWpq3g3ZpRgOXWTFGUEhW1GF2e&sz=w400"
-  },
-  {
     "titulo": "Educação Financeira Escolas",
     "autor": "Vários Autores",
     "categoria": "Economia & Finanças",
@@ -3003,14 +2996,7 @@
     "capa": "https://drive.google.com/thumbnail?id=17H9HwiwA2tFvkOc2mLlFEIGzm8voIvbk&sz=w400"
   },
   {
-    "titulo": "Laços de família.",
-    "autor": "Clarice Lispector.",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=1Z_AvRgZP636ZOnKMlG-bcHS3aOVnmDWt",
-    "capa": "https://drive.google.com/thumbnail?id=1Y39J1iOgDxNLF_lBELetU84WIfBYV-Bo&sz=w400"
-  },
-  {
-    "titulo": "Últimos Sonetos.",
+    "titulo": "Últimos Sonetos",
     "autor": "Cruz e Souza ",
     "categoria": "História",
     "link": "https://drive.google.com/open?id=1O_Nu6RbZESK2D3Gt67DsRYZXrGuIdvrt",
@@ -3045,7 +3031,7 @@
     "capa": "https://drive.google.com/thumbnail?id=1BILc6KbKEocjeKSt7YBcenz6reHRMx69&sz=w400"
   },
   {
-    "titulo": "Várias histórias",
+    "titulo": "Várias Histórias",
     "autor": "Macho de Assis",
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=16fTeN9aoVrjScMC-48Ie2WALk_9Kms01",
