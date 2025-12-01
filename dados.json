@@ -3241,13 +3241,6 @@
     "capa": "https://drive.google.com/thumbnail?id=1-CRiO_FN3P_8mfKhPh-qVscin3sxmGDj&sz=w400"
   },
   {
-    "titulo": " Minha vida ",
-    "autor": "Miguel, José",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=1DwyBtqJYVum1xjwSUR8Cl8XIJ7aKTsb9",
-    "capa": "https://drive.google.com/thumbnail?id=1abS2dBlDcfRu_yRtiyP84hRZumn0QLXp&sz=w400"
-  },
-  {
     "titulo": "Emma",
     "autor": "Jane Austen ",
     "categoria": "Literatura",
@@ -3283,20 +3276,6 @@
     "capa": "https://drive.google.com/thumbnail?id=1WqCDwssmnD64Lv9vcs_lOGhPcIlkb0Rv&sz=w400"
   },
   {
-    "titulo": "A tempestade ",
-    "autor": "Shakespeare, William",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=1UQ_xwQQ4B4R6UzE2YDcalWX_huntFKqh",
-    "capa": "https://drive.google.com/thumbnail?id=1MID8e4BpYTepWZTt1NSTHZCQjXQ_WIbB&sz=w400"
-  },
-  {
-    "titulo": "O Minotauro ",
-    "autor": "Monteiro Lobato ",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=1aNUHFfFMwc7qDuvYUh0AoTGCMZgaeLAY",
-    "capa": "https://drive.google.com/thumbnail?id=16MC1OfcnDw9aI2Fy4ZSpnxAr_MVe6eoo&sz=w400"
-  },
-  {
     "titulo": "Persuasão ",
     "autor": "Jane Austen ",
     "categoria": "Literatura",
@@ -3330,13 +3309,6 @@
     "categoria": "Química",
     "link": "https://drive.google.com/open?id=1X1sQd5OCoOBa6D9SVzP-LlTOoJNvJEhz",
     "capa": "https://drive.google.com/thumbnail?id=1U9oSyDOqf4KdGqUOBrysvj2V4dd-FYU2&sz=w400"
-  },
-  {
-    "titulo": "Da Terra à Lua ",
-    "autor": "Júlio Verne",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=1Lv3oPSoXYWY4kdG_B2YQzgHxrSLCtaZv",
-    "capa": "https://drive.google.com/thumbnail?id=1-G-SagwMIdGGJO8o8u3cWEshdr_g_gEB&sz=w400"
   },
   {
     "titulo": "Almas Mortas",
@@ -3379,13 +3351,6 @@
     "categoria": "Filosofia",
     "link": "https://drive.google.com/open?id=1DHrUOyDhUc4hKw9yNCYLvL3jItJQnf2C",
     "capa": "https://drive.google.com/thumbnail?id=18wwdSIo0-uCSw7xH_oXnz0-rs-eljLt1&sz=w400"
-  },
-  {
-    "titulo": "Amor de perdição ",
-    "autor": "Camilo castelo branco ",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=10e2i8ZLM5Xz_ukmH_iK4TizAMIb2ANnN",
-    "capa": "https://drive.google.com/thumbnail?id=1mlTngffCE5oFzRSiyUBznEyIHUQy54Va&sz=w400"
   },
   {
     "titulo": "Esquerdismo, Doença Infantil do Comunismo",
@@ -3470,5 +3435,12 @@
     "categoria": "Filosofia",
     "link": "https://drive.google.com/open?id=1A-jkhn0eBh6QGVrz6Jii9OM1xN3y73ax",
     "capa": "https://drive.google.com/thumbnail?id=1kKHs7Ws2q_FatpS9W5jLkXVH57hDDStL&sz=w400"
+  },
+  {
+    "titulo": "O liberalismo de Ralf Dahrendorf",
+    "autor": "Junior, Antonio Carlos Dias",
+    "categoria": "Literatura",
+    "link": "https://drive.google.com/open?id=1nborpZ6024OgDRjXDYj5p0LJoi0qil4g",
+    "capa": "https://drive.google.com/thumbnail?id=1oaN4oxU9z-8HsDL23fd1E32sODtcti5A&sz=w400"
   }
 ]
