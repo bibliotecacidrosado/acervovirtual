@@ -3444,39 +3444,11 @@
     "capa": "https://drive.google.com/thumbnail?id=1oaN4oxU9z-8HsDL23fd1E32sODtcti5A&sz=w400"
   },
   {
-    "titulo": "A Origem das Espécies",
-    "autor": "Charles Darwin",
-    "categoria": "Ciências",
-    "link": "https://drive.google.com/open?id=1DjOwZvHxSv9Q9PwSKI74uz75IHP02aGr",
-    "capa": "https://drive.google.com/thumbnail?id=134s0PIlMdK3qBA374i3PrbvAdmyVsgBG&sz=w400"
-  },
-  {
-    "titulo": "Inferno ",
-    "autor": "Dante Alighieri",
-    "categoria": "Antropologia",
-    "link": "https://drive.google.com/open?id=1byoTV5cGPaoUOnDQzcpNUzX3CDUvRRiK",
-    "capa": "https://drive.google.com/thumbnail?id=1T0s1Pp5MHlCXZOJYbInukH2WDj1LNYLJ&sz=w400"
-  },
-  {
     "titulo": "Céu em fogo ",
     "autor": "Camilo de Sá-carneiro",
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1EIaMfUhcy-NaoS4SGjOelzuZkNZmemJf",
     "capa": "https://drive.google.com/thumbnail?id=1Hze5DxiPCLhdjXQTyudT9KQTp65rxD06&sz=w400"
-  },
-  {
-    "titulo": "Sonho de uma noite de verão ",
-    "autor": "Shakespeare, William",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=1r0RHCri1xNjNaLy9wnJPd6iiwrD__9GS",
-    "capa": "https://drive.google.com/thumbnail?id=1LDiNKAtB3dKedD-hmTxLz9Oyka2LNzs7&sz=w400"
-  },
-  {
-    "titulo": "A divina comédia ",
-    "autor": "Dante Alighieri",
-    "categoria": "Antropologia",
-    "link": "https://drive.google.com/open?id=1NATAiBxp3uye4I5P0wDA0c4FnKgfr-Ah",
-    "capa": "https://drive.google.com/thumbnail?id=1q0t9zmxxIvSGzmSPddg6Z_x2JzRD2uqb&sz=w400"
   },
   {
     "titulo": "A Filha do Capitão ",
@@ -3540,20 +3512,6 @@
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1rTHKe29zRgJ9IqY1xJhPifCbjTyWIogo",
     "capa": "https://drive.google.com/thumbnail?id=1i_9TjEr2yYodJMbbcW0ICbRv5TukY-Hh&sz=w400"
-  },
-  {
-    "titulo": "Sobre a alma ",
-    "autor": "Aristoteles ",
-    "categoria": "Filosofia",
-    "link": "https://drive.google.com/open?id=1TV00Cu7gJafH65helowTgM7ryfu1z7Ny",
-    "capa": "https://drive.google.com/thumbnail?id=1fBIhfrw2FALW5hdmahFOJg3cw28EjP4z&sz=w400"
-  },
-  {
-    "titulo": "Mensagem ",
-    "autor": "Fernando pessoa ",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=1lJDlwv9RW3BtOJjGGbyIpkWv23zjZzTh",
-    "capa": "https://drive.google.com/thumbnail?id=1LzlDc0GNNYXm3C5oCzspU96h-YgyP59T&sz=w400"
   },
   {
     "titulo": "Memórias do Cárcere",
@@ -3647,13 +3605,6 @@
     "capa": "https://drive.google.com/thumbnail?id=1YmlEa9he0pru6CJ7RlSmE_d3hXAqrsmW&sz=w400"
   },
   {
-    "titulo": "Reflexões Sobre a Vaidade dos Homens ",
-    "autor": "Matias Aires ",
-    "categoria": "Filosofia",
-    "link": "https://drive.google.com/open?id=1j9sLSql1hhLkgFed_xvLaNKSZHTOlGTd",
-    "capa": "https://drive.google.com/thumbnail?id=1LS8EFaBG3OQLyOD445rdI2I97a96T6Bm&sz=w400"
-  },
-  {
     "titulo": "O chifre do unicórnio ",
     "autor": "Maria esther",
     "categoria": "Educação & Pedagogia",
@@ -3675,24 +3626,10 @@
     "capa": "https://drive.google.com/thumbnail?id=1N1ONMtuGT0HZxFP3pxSS0uj-5OigQqkv&sz=w400"
   },
   {
-    "titulo": "Admirável Mundo Novo ",
-    "autor": "Aldous Huxley",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=13MoVrgDJYMAWxK8fClJgeYwNrrclMeKC",
-    "capa": "https://drive.google.com/thumbnail?id=1Q_Gb2ZErphQbRMRfFCpi3sXBAyXOtaob&sz=w400"
-  },
-  {
     "titulo": "Mistério no Expresso Baturité",
     "autor": "Milson Alemeda",
     "categoria": "Educação & Pedagogia",
     "link": "https://drive.google.com/open?id=16NLYSqtpuWdWSFOl8UBRgAHdgOjfG1Tp",
     "capa": "https://drive.google.com/thumbnail?id=19gmgA1RcXrdeaKl4oNJ60GRxbFrxW1Yq&sz=w400"
-  },
-  {
-    "titulo": "A aposta ",
-    "autor": "Anton Tchekhov",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=10l8-oXihOI81WuS6Xt2KudGaijRMlhgz",
-    "capa": "https://drive.google.com/thumbnail?id=1CahQhzla6LnHcRdFUH9B6A4nivL4jA_b&sz=w400"
   }
 ]
