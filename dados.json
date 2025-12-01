@@ -3318,13 +3318,6 @@
     "capa": "https://drive.google.com/thumbnail?id=1IM4vokBCEnu9dGohSxgMLaYvtbYhpAYQ&sz=w400"
   },
   {
-    "titulo": "A tragédia de Macbeth ",
-    "autor": " Shakespeare, William",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=1D0bCbMlOO4oSt6P8LDO_JQIXxMRxJM7S",
-    "capa": "https://drive.google.com/thumbnail?id=1KGirIa1PfTodgTiyf4ImjK9kZVjgpjhn&sz=w400"
-  },
-  {
     "titulo": "Fédon ( a imortalidade da alma)",
     "autor": "Platão ",
     "categoria": "Filosofia",
@@ -3470,5 +3463,12 @@
     "categoria": "Filosofia",
     "link": "https://drive.google.com/open?id=15RZDn89VEZ4z4hLiMT0oCgIibINdOCVq",
     "capa": "https://drive.google.com/thumbnail?id=1Zkzl-s4hPHtuNwjGLXNea6H-jhugq574&sz=w400"
+  },
+  {
+    "titulo": "Estética ",
+    "autor": "Vários autores ",
+    "categoria": "Filosofia",
+    "link": "https://drive.google.com/open?id=1A-jkhn0eBh6QGVrz6Jii9OM1xN3y73ax",
+    "capa": "https://drive.google.com/thumbnail?id=1kKHs7Ws2q_FatpS9W5jLkXVH57hDDStL&sz=w400"
   }
 ]
