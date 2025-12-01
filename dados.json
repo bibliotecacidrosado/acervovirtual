@@ -3192,39 +3192,11 @@
     "capa": "https://drive.google.com/thumbnail?id=1ZjKai8b2icQU0P92MMGdUoAO1sk1mOd_&sz=w400"
   },
   {
-    "titulo": "Teoria do Medalhão",
-    "autor": " Machado de Assis",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=1b69WoEttd3BGn4Tk5lRAqswFZmqxBgv6",
-    "capa": "https://drive.google.com/thumbnail?id=11zGtIGLg-A9B9IMJO9HZXb4WFsZk8zWo&sz=w400"
-  },
-  {
-    "titulo": "O Moleque ",
-    "autor": "Lima Barreto ",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=14L0mXQbzCr5CLZd-GYsJcRkM9dK4qn_c",
-    "capa": "https://drive.google.com/thumbnail?id=1p2jHLZlOJDPbL6fvOrxAKjvg6JhQmyxE&sz=w400"
-  },
-  {
-    "titulo": "O Minotauro ",
-    "autor": "Monteiro Lobato ",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=1-swUEz8rwQ8h8v19SIh4v9ND9r3mWzXe",
-    "capa": "https://drive.google.com/thumbnail?id=1nmWKUp4cwYmy5iL3fZ1IF_IJPbQXdIjE&sz=w400"
-  },
-  {
     "titulo": "Marquês de Rabicó ",
     "autor": "Monteiro Lobato ",
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1aDNX68kHNPTljkx-Nxx70cGX83wzq9PE",
     "capa": "https://drive.google.com/thumbnail?id=1q6_S3rCw2qMD6_0kXYIcjLevUEvGcrWJ&sz=w400"
-  },
-  {
-    "titulo": "Confissões ",
-    "autor": "Santo Agostinho ",
-    "categoria": "Filosofia",
-    "link": "https://drive.google.com/open?id=1WePQIMHwxLzh_krxG2X8mt18PK5RLJ3g",
-    "capa": "https://drive.google.com/thumbnail?id=1iBFrT5QpsjCFM2ymxMju7VnwrnXc37od&sz=w400"
   },
   {
     "titulo": "A Cidade do Sol ",
@@ -3253,5 +3225,12 @@
     "categoria": "Filosofia",
     "link": "https://drive.google.com/open?id=1-B1NjYLpoWIZfdwZa5ibpkukOH_jSgx6",
     "capa": "https://drive.google.com/thumbnail?id=1_3k9WEA6_zR9xbfwwLhtl10hbkZhdZEH&sz=w400"
+  },
+  {
+    "titulo": "A Dama das Camélias ",
+    "autor": "Alexandre Dumas Filho",
+    "categoria": "Literatura",
+    "link": "https://drive.google.com/open?id=1jVpHUUfOKW-ac-l7VBZ6xp15mqOVevtp",
+    "capa": "https://drive.google.com/thumbnail?id=1fqhv0CUrNvNgrIFqke67HAaiUUXaPIWr&sz=w400"
   }
 ]
