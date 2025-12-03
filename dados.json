@@ -3676,24 +3676,10 @@
   },
   {
     "titulo": "A Megera Domada",
-    "autor": "Wiliam Shakespeare",
+    "autor": "William Shakespeare",
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1EVzznWopppG6Sk3z0f3-oPHQs2MtTfSl",
     "capa": "https://drive.google.com/thumbnail?id=1eBSL46F8xevfYfNco1QW9vREqPqgGrSh&sz=w400"
-  },
-  {
-    "titulo": "O Mercador de Veneza",
-    "autor": "William Shakespeare",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=1ASBh3Ihk95S-DvJxsDVrcNlcG3vqSm24",
-    "capa": "https://drive.google.com/thumbnail?id=1KNVTtIhxrYcai2ufmWncPGViI2O66Hwi&sz=w400"
-  },
-  {
-    "titulo": "O Primo Brasilio",
-    "autor": "Eça Queiroz",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=17XXUxT1DfIrnlfJOQtK584xXElso1Q8W",
-    "capa": "https://drive.google.com/thumbnail?id=14p8hfGEnXWi5pylByxzqdk2LXb2uzGvu&sz=w400"
   },
   {
     "titulo": "Cinco Mulheres",
@@ -3708,13 +3694,6 @@
     "categoria": "Literatura",
     "link": "https://drive.google.com/open?id=1BwvW_6oht-ZQRwN8GjByImpwxaJfJJ56",
     "capa": "https://drive.google.com/thumbnail?id=1KHhbVCBdP3uxKpevaXc9gJgbffeiT4J0&sz=w400"
-  },
-  {
-    "titulo": "Os Lusíadas",
-    "autor": "Luís Camões",
-    "categoria": "Literatura",
-    "link": "https://drive.google.com/open?id=1QgQqtUQWGCvivYEln9Q1I_dxtRUh_nP4",
-    "capa": "https://drive.google.com/thumbnail?id=1w8dMbIjlmmpyFH0_QP8ZfFPAvda4Zfdk&sz=w400"
   },
   {
     "titulo": "Canções e Elegias",
